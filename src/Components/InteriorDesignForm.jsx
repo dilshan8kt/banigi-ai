@@ -11,17 +11,84 @@ import Natural from "../assets/Natural.png"
 import none from "../assets/none.png"
 import relaxed from "../assets/relaxed.png"
 import warmEarth from "../assets/warmEarth.png"
+import { createMask, generateImage, getGeneratedImage, getMask } from "../apis/Apis";
+import { getColorPreferenceList, getSpaceTypes, getThemeList } from "../apis/OptionsApis";
+import { useEffect } from "react";
 
 
 
 const InteriorDesignForm = () => {
+  const [type, setType] = useState("");
+  const [style, setStyle] = useState("");
+  const [color, setColor] = useState("");
+  const [noOfdeisign, setNoOfDesign] = useState(1);
+
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedName, setSelectedName] = useState("");
+  const [interiorSpaces, setInteriorSpaces] = useState([]);
+  const [interiorThemes, setInteriorThemes] = useState([]);
+  const [generatedImages, setGeneratedImages] = useState([]);
+  const [patterns, setPatterns] = useState([]);
+
+  useEffect(()=>{
+    getTypes();
+    getStyles();
+    getColors();
+  },[])
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
     setSelectedName(file.name);
   };
+
+  const getTypes = async () =>{
+    let spaces = []
+    const types = await getSpaceTypes()
+    if(types){
+      let interior_spaces = types.data['interior_spaces']
+      interior_spaces.forEach(e => {
+        let arr = removeChar(e);
+        spaces.push({value:arr[0],label:arr[1]})
+      });
+      setInteriorSpaces(spaces)
+    }
+  } 
+
+  const getStyles = async () =>{
+    let themes = []
+    const styles = await getThemeList()
+    if(styles){
+      let interior_themes = styles.data['interior_themes']
+      interior_themes.forEach(e => {
+        let arr = removeChar(e);
+        themes.push({value:arr[0],label:arr[1]})
+      });
+      setInteriorThemes(themes)
+    }
+  }
+
+  const getColors = async () =>{
+    let colorP = []
+    const colors = await getColorPreferenceList()
+    if(colors){
+      let patterns = colors.data['color']
+      patterns.forEach(e => {
+        colorP.push({value:e,label:e})
+      });
+      setPatterns(colorP)
+    }
+  } 
+
+  const removeChar = (e) => {
+    let str = JSON.stringify(e);
+    let remove1 = str.replace(/{/g, "")
+    let remove2 = remove1.replace(/}/g, "")
+    let remove3 = remove2.replace(/"/g, "")
+    var arr = remove3.split(":");
+
+    return arr;
+  }
 
   const InteriorOptions = [
     { value: "Bath Room", label: "Bath Room" },
@@ -57,9 +124,7 @@ const InteriorDesignForm = () => {
   const NumberOfDesignOptions = [
     { value: "1", label: "1" },
     { value: "2", label: "2" },
-    { value: "3", label: "3" },
-    { value: "4", label: "4" },
-    { value: "5", label: "5" },
+    { value: "3", label: "3" }
   ];
   const renderOption = (option) => (
     <div
@@ -78,12 +143,61 @@ const InteriorDesignForm = () => {
     </div>
   );
 
+  const handleAi = async (e) =>  {
+    e.preventDefault()
+    let maskUrl = [];
+    let image_url = "https://mir-s3-cdn-cf.behance.net/project_modules/1400/1defc144143987.5808bd1b9eb91.jpg";
+    console.log("Running....");
+    let mask = await createMask(image_url);
+    if(mask){
+      let job_id = mask.data.job_id;
+      let stop = "";
+      let run = setInterval(async ()=> {
+        let data = await getMask(job_id);
+        console.log(data.data.job_status);
+        if(data.data.job_status == "done"){
+          stop = data.data.job_status;
+          if(data.data.masks){
+            // console.log(data.data.masks);
+            data.data.masks.forEach(e => {
+              maskUrl.push(e.url);
+            });
+          }
+          clearInterval(run);
+          console.log("image generating...");
+          let genarate_img = await generateImage(image_url,maskUrl,type,style,color,noOfdeisign);
+          console.log("image generated");
+          if(genarate_img){
+              if(genarate_img.data.job_id){
+                console.log("getting...");
+              let run_generate_imgs =  setInterval(async () => {
+                let genarate_imgs = await getGeneratedImage(genarate_img.data.job_id);
+                console.log(genarate_imgs.data.job_status);
+                if(genarate_imgs.data.job_status == "done"){
+                  // console.log(genarate_imgs.data.generated_images);
+                  setGeneratedImages([...genarate_imgs.data.generated_images])
+                  clearInterval(run_generate_imgs);
+                }
+              }, 2000);
+            }
+          }
+        }
+      },2000)
+    }
+  }
+
   return (
     <>
       <div className="tryDesignFormDiv">
         <form action="">
-          <div className="tryDesignFile">
-            <span>
+          <div className="tryDesignFile" style={selectedFile?{padding:0}:{padding:'80px 35px'}}>
+            {
+              selectedFile?<img className="ai_image_view" src={URL.createObjectURL(selectedFile)} alt="" />:null
+            }
+            
+            {
+              selectedFile ?
+              null:<span>
               {" "}
               <svg
                 width="22"
@@ -103,20 +217,30 @@ const InteriorDesignForm = () => {
                   fill="#C79952"
                 />
               </svg>
-              {selectedName ||
-                "Tap to upload interior image Or Drag Image here direclty"}
+                "Tap to upload interior image Or Drag Image here direclty"
             </span>
+            }
             <input type="file" name="" id="" onChange={handleFileChange} />
+          </div>
+          <div className="NewDesignGrid" style={{marginTop:'10px'}}>
+            {
+              Object.values(generatedImages).map((e,key)=>{
+                return [
+                  <img src={e} alt="" />
+                ]
+              })
+            }
           </div>
           <div className="selectOptionDiv">
             <label htmlFor="">Interior Type</label>
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              defaultValue={InteriorOptions[0]}
-              options={InteriorOptions}
+              defaultValue={interiorSpaces[0]}
+              options={interiorSpaces}
               styles={customStyles}
               isSearchable={false}
+              onChange={(e)=> setType(e.value)}
             />
             <label htmlFor="">Mode</label>
             <Select
@@ -133,22 +257,24 @@ const InteriorDesignForm = () => {
                
                className="react-select-container"
                classNamePrefix="react-select"
-                defaultValue={styleOptions[0]}
-                options={styleOptions}
+                defaultValue={interiorThemes[0]}
+                options={interiorThemes}
                 styles={customStyles}
                 isSearchable={false}
+                onChange={(e)=> setStyle(e.value)}
               />
             <label htmlFor="">Color</label>
             <Select
                
                className="react-select-container"
                classNamePrefix="react-select"
-                defaultValue={colourOptions[0]}
-                options={colourOptions}
+                defaultValue={patterns[0]}
+                options={patterns}
                 styles={customStyles}
                 isSearchable={false}
-                getOptionLabel={(option) => renderOption(option)}
+                // getOptionLabel={(option) => renderOption(option)}
                 getOptionValue={(option) => option.value}
+                onChange={(e)=> setColor(e.value)}
               />
             <label htmlFor="">Number Of Designs</label>
             <Select
@@ -159,6 +285,7 @@ const InteriorDesignForm = () => {
                 options={NumberOfDesignOptions}
                 styles={customStyles}
                 isSearchable={false}
+                onChange={(e)=>setNoOfDesign(parseInt(e.value))}
               />
             <label htmlFor="">AI Intervention</label>
             <div className="intervation_radio">
@@ -199,7 +326,7 @@ const InteriorDesignForm = () => {
             </div>
           </div>
 
-          <PrimaryButton text="Generate Image" />
+          <PrimaryButton text="Generate Image"  onClick={(e)=>handleAi(e)}/>
         </form>
       </div>
     </>

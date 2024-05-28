@@ -2,17 +2,61 @@ import React, { useState } from 'react'
 import PrimaryButton from './PrimaryButton';
 import customStyles from "../Components/selectCustomStyle";
 import Select from "react-select";
+import { createMask, generateImage, getGeneratedImage, getMask } from '../apis/Apis';
 
 
 
 const LandscapeDesignForm = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [selectedName, setSelectedName] = useState("");
+    
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         setSelectedFile(file);
         setSelectedName(file.name);
     };
+
+    const handleAi = async (e) =>  {
+        e.preventDefault()
+        let maskUrl = [];
+        let image_url = "https://www.bankrate.com/2022/09/01101108/luxury-real-estate-157375176.jpg?auto=webp&optimize=high&crop=16:9";
+        console.log("Running....");
+        let mask = await createMask(image_url);
+        if(mask){
+          let job_id = mask.data.job_id;
+          let stop = "";
+          let run = setInterval(async ()=> {
+            let data = await getMask(job_id);
+            console.log(data.data.job_status);
+            if(data.data.job_status == "done"){
+              stop = data.data.job_status;
+              if(data.data.masks){
+                console.log(data.data.masks);
+                data.data.masks.forEach(e => {
+                  maskUrl.push(e.url);
+                });
+              }
+              clearInterval(run);
+              console.log("image generating...");
+              let genarate_img = await generateImage(image_url,maskUrl);
+              console.log("image generated");
+              if(genarate_img){
+                  if(genarate_img.data.job_id){
+                    console.log("geting...");
+                  let run_generate_imgs =  setInterval(async () => {
+                    let genarate_imgs = await getGeneratedImage(genarate_img.data.job_id);
+                    console.log(genarate_imgs.data.job_status);
+                    if(genarate_imgs.data.job_status == "done"){
+                      console.log(genarate_imgs.data.generated_images);
+                      clearInterval(run_generate_imgs);
+                    }
+                  }, 2000);
+                }
+              }
+            }
+          },2000)
+        }
+      }
 
     const landscapeOptions = [
         { value: 'Modern', label: 'Modern' },
@@ -154,7 +198,7 @@ const LandscapeDesignForm = () => {
 
                     </div>
 
-                    <PrimaryButton text="Generate Image"/>
+                    <PrimaryButton onClick={(e)=>handleAi(e)} text="Generate Image"/>
                 </form>
             </div>
 
