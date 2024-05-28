@@ -18,7 +18,7 @@ const Feedback = () => {
 
             <div className="feedback_div" id='feedback'>
 
-                <h2>What our <span>customers</span> say about us?</h2>
+                <h2>What our <span>customers</span> say about us? tdk</h2>
 
                 <Swiper
                     modules={[Navigation, Pagination]}
