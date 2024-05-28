@@ -146,7 +146,7 @@ const InteriorDesignForm = () => {
   const handleAi = async (e) =>  {
     e.preventDefault()
     let maskUrl = [];
-    let image_url = "https://mir-s3-cdn-cf.behance.net/project_modules/1400/1defc144143987.5808bd1b9eb91.jpg";
+    let image_url = URL.createObjectURL(selectedFile);
     console.log("Running....");
     let mask = await createMask(image_url);
     if(mask){
