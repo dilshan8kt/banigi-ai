@@ -94,7 +94,7 @@ const InteriorDesignForm = () => {
 
   const uploadImageToSupabase = async () => {
     console.log("uploading...");
-    let {data} = await supabase.storage.from('banigi-ai images').upload("deisign-image"+"/"+selectedName,selectedFile);
+    let {data} = await supabase.storage.from('banigi-ai images').upload("deisign-images"+"/"+selectedName,selectedFile);
     if(data){
       console.log("uploaded");
       return SUPABASE_BUCKET_PATH+data.path;
