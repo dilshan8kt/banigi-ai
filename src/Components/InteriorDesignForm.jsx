@@ -14,6 +14,8 @@ import warmEarth from "../assets/warmEarth.png"
 import { createMask, generateImage, getGeneratedImage, getMask } from "../apis/Apis";
 import { getColorPreferenceList, getSpaceTypes, getThemeList } from "../apis/OptionsApis";
 import { useEffect } from "react";
+import { supabase } from "../supabase/supabaseClient";
+import { SUPABASE_BUCKET_PATH } from "../constants/config";
 
 
 
@@ -90,6 +92,15 @@ const InteriorDesignForm = () => {
     return arr;
   }
 
+  const uploadImageToSupabase = async () => {
+    console.log("uploading...");
+    let {data} = await supabase.storage.from('banigi-ai images').upload("deisign-image"+"/"+selectedName,selectedFile);
+    if(data){
+      console.log("uploaded");
+      return SUPABASE_BUCKET_PATH+data.path;
+    }
+  }
+
   const InteriorOptions = [
     { value: "Bath Room", label: "Bath Room" },
     { value: "Bed Room", label: "Bed Room" },
@@ -146,43 +157,46 @@ const InteriorDesignForm = () => {
   const handleAi = async (e) =>  {
     e.preventDefault()
     let maskUrl = [];
-    let image_url = URL.createObjectURL(selectedFile);
-    console.log("Running....");
-    let mask = await createMask(image_url);
-    if(mask){
-      let job_id = mask.data.job_id;
-      let stop = "";
-      let run = setInterval(async ()=> {
-        let data = await getMask(job_id);
-        console.log(data.data.job_status);
-        if(data.data.job_status == "done"){
-          stop = data.data.job_status;
-          if(data.data.masks){
-            // console.log(data.data.masks);
-            data.data.masks.forEach(e => {
-              maskUrl.push(e.url);
-            });
-          }
-          clearInterval(run);
-          console.log("image generating...");
-          let genarate_img = await generateImage(image_url,maskUrl,type,style,color,noOfdeisign);
-          console.log("image generated");
-          if(genarate_img){
-              if(genarate_img.data.job_id){
-                console.log("getting...");
-              let run_generate_imgs =  setInterval(async () => {
-                let genarate_imgs = await getGeneratedImage(genarate_img.data.job_id);
-                console.log(genarate_imgs.data.job_status);
-                if(genarate_imgs.data.job_status == "done"){
-                  // console.log(genarate_imgs.data.generated_images);
-                  setGeneratedImages([...genarate_imgs.data.generated_images])
-                  clearInterval(run_generate_imgs);
-                }
-              }, 2000);
+    let image_url = await uploadImageToSupabase();
+
+    if(image_url){
+      console.log("Running....");
+      let mask = await createMask(image_url);
+      if(mask){
+        let job_id = mask.data.job_id;
+        let stop = "";
+        let run = setInterval(async ()=> {
+          let data = await getMask(job_id);
+          console.log(data.data.job_status);
+          if(data.data.job_status == "done"){
+            stop = data.data.job_status;
+            if(data.data.masks){
+              // console.log(data.data.masks);
+              data.data.masks.forEach(e => {
+                maskUrl.push(e.url);
+              });
+            }
+            clearInterval(run);
+            console.log("image generating...");
+            let genarate_img = await generateImage(image_url,maskUrl,type,style,color,noOfdeisign);
+            console.log("image generated");
+            if(genarate_img){
+                if(genarate_img.data.job_id){
+                  console.log("getting...");
+                let run_generate_imgs =  setInterval(async () => {
+                  let genarate_imgs = await getGeneratedImage(genarate_img.data.job_id);
+                  console.log(genarate_imgs.data.job_status);
+                  if(genarate_imgs.data.job_status == "done"){
+                    // console.log(genarate_imgs.data.generated_images);
+                    setGeneratedImages([...genarate_imgs.data.generated_images])
+                    clearInterval(run_generate_imgs);
+                  }
+                }, 2000);
+              }
             }
           }
-        }
-      },2000)
+        },2000)
+      }
     }
   }
 

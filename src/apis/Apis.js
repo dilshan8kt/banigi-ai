@@ -1,9 +1,10 @@
 import axios from "axios";
+import { API_BASE_URL, API_KEY } from "../constants/config";
 
-const base_url = "https://api.reimaginehome.ai";
+const base_url = API_BASE_URL;
 const headers = {
   "content-type": "application/json",
-  "api-key": "66530f6dbfb09206e0f67369",
+  "api-key": API_KEY,
 };
 
 export const createMask = (url) => {
