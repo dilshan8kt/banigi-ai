@@ -7,6 +7,7 @@ const headers = {
 };
 
 export const createMask = (url) => {
+  console.log(url);
   return axios
     .post(
       `${base_url}/v1/create_mask`,
