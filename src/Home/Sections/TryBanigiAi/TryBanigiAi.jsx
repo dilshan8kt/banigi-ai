@@ -190,6 +190,7 @@ const TryBanigiAi = (props) => {
   ];
   const handleTabClick = (index) => {
     setActiveTab(index);
+    // setGeneratedImages([]);
   };
   const renderTabs = () => {
     return tabs.map((tab, index) => (
@@ -217,19 +218,31 @@ const TryBanigiAi = (props) => {
           <div className="tab_content_div">
             <div className="tab-content">{tabs[activeTab]?.content}</div>
             {parseInt(generatedImages.length) > 0 ? (
-              console.log(generatedImages.length),
-              <div className="swiper-div">
-                {Object.values(generatedImages).map((e, key) => {
-                  return [
-                    <ReactCompareImage
-                      key={"design_" + key}
-                      leftImage={selectedImage}
-                      rightImage={e}
-                    />,
-                    <br />,
-                  ];
-                })}
-              </div>
+              (console.log(generatedImages.length),
+              (
+                <div className="swiper-div">
+                  {Object.values(generatedImages).map((e, key) => {
+                    return [
+                      <ReactCompareImage
+                        key={"design_" + key}
+                        leftImageCss={{
+                          borderTopLeftRadius: "10px",
+                          borderBottomLeftRadius: "10px",
+                          borderTopRightRadius: "10px",
+                          borderBottomRightRadius: "10px",
+                        }}
+                        rightImageCss={{
+                          borderTopRightRadius: "10px",
+                          borderBottomRightRadius: "10px",
+                        }}
+                        leftImage={selectedImage}
+                        rightImage={e}
+                      />,
+                      <br />,
+                    ];
+                  })}
+                </div>
+              ))
             ) : (
               <div className="swiper-div">
                 <Swiper
