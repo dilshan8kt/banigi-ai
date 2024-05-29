@@ -3777,3 +3777,29 @@ a:active {
   border-radius: 5px;
   margin: 5px;
 }
+/* loader */
+.loading-state {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(158 111 49 / 30%);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 7px solid #ddd;
+  border-top-color: orange;
+  animation: loading 1s linear infinite;
+}
+@keyframes loading {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -19,7 +19,7 @@ import { SUPABASE_BUCKET_PATH } from "../constants/config";
 
 
 
-const InteriorDesignForm = () => {
+const InteriorDesignForm = (props) => {
   const [type, setType] = useState("");
   const [style, setStyle] = useState("");
   const [color, setColor] = useState("");
@@ -162,6 +162,7 @@ const InteriorDesignForm = () => {
 
   const handleAi = async (e) =>  {
     e.preventDefault()
+    props.manageLoader(true)
     let maskUrl = [];
     let image_url = await uploadImageToSupabase();
 
@@ -195,6 +196,7 @@ const InteriorDesignForm = () => {
                   if(genarate_imgs.data.job_status == "done"){
                     // console.log(genarate_imgs.data.generated_images);
                     setGeneratedImages([...genarate_imgs.data.generated_images])
+                    props.manageLoader(false)
                     clearInterval(run_generate_imgs);
                   }
                 }, 2000);
