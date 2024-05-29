@@ -249,6 +249,11 @@ const InteriorDesignForm = (props) => {
         text: "Check all the inputs",
         icon: "warning",
         confirmButtonText: "OK",
+        color: "red",
+        width: "20rem",
+        heightAuto: true,
+        confirmButtonColor: "red",
+        background: "antiquewhite",
       });
       return false;
     } else {
