@@ -26,6 +26,7 @@ import { useEffect } from "react";
 import { supabase } from "../supabase/supabaseClient";
 import { SUPABASE_BUCKET_PATH } from "../constants/config";
 import Swal from "sweetalert2";
+import { getImageSize } from "react-image-size";
 
 const InteriorDesignForm = (props) => {
   const [type, setType] = useState("");
@@ -47,13 +48,16 @@ const InteriorDesignForm = (props) => {
     getColors();
   }, []);
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     props.manageLoader(true);
     const file = event.target.files[0];
-    setSelectedFileDummy(URL.createObjectURL(file));
-    props.selectImage(URL.createObjectURL(file));
-    setSelectedFile(file);
-    setSelectedName(file.name);
+    let check = await checkImageSize(URL.createObjectURL(file));
+    if (check) {
+      setSelectedFileDummy(URL.createObjectURL(file));
+      props.selectImage(URL.createObjectURL(file));
+      setSelectedFile(file);
+      setSelectedName(file.name);
+    }
     props.manageLoader(false);
   };
 
@@ -259,6 +263,35 @@ const InteriorDesignForm = (props) => {
     } else {
       return true;
     }
+  };
+
+  const checkImageSize = async (path) => {
+    const dimensions = await getImageSize(path);
+
+    if (
+      dimensions.width > 512 &&
+      dimensions.width < 2048 &&
+      dimensions.height > 512 &&
+      dimensions.height < 2048
+    ) {
+      console.log(dimensions.width + " x " + dimensions.height);
+      return true;
+    } else {
+      console.log(dimensions.width + " x " + dimensions.height);
+      Swal.fire({
+        title: "",
+        text: "Image dimensions error",
+        icon: "error",
+        confirmButtonText: "OK",
+        color: "red",
+        width: "20rem",
+        heightAuto: true,
+        confirmButtonColor: "red",
+        background: "antiquewhite",
+      });
+      return false;
+    }
+    console.log(dimensions);
   };
 
   return (
