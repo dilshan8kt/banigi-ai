@@ -174,69 +174,75 @@ const InteriorDesignForm = (props) => {
 
   const handleAi = async (e) => {
     e.preventDefault();
-    props.generatedImagesArr([
-      "https://png.pngtree.com/thumb_back/fh260/background/20230616/pngtree-exterior-design-of-a-modern-house-in-the-city-a-3d-image_3606113.jpg",
-      "https://i.pinimg.com/originals/b1/15/18/b11518ccfd6295f09f83b7d4baec7cfd.jpg",
-      "https://i.pinimg.com/736x/b4/b9/aa/b4b9aac0fd4a6efd448db56874b15326.jpg"
-    ]);
-    // props.manageLoader(true);
-    // let maskUrl = [];
-    // let image_url = await uploadImageToSupabase();
+    // props.generatedImagesArr([
+    //   "https://png.pngtree.com/thumb_back/fh260/background/20230616/pngtree-exterior-design-of-a-modern-house-in-the-city-a-3d-image_3606113.jpg",
+    //   "https://i.pinimg.com/originals/b1/15/18/b11518ccfd6295f09f83b7d4baec7cfd.jpg",
+    //   "https://i.pinimg.com/736x/b4/b9/aa/b4b9aac0fd4a6efd448db56874b15326.jpg"
+    // ]);
+    
+    
+    
+    
+    
+    
+    props.manageLoader(true);
+    let maskUrl = [];
+    let image_url = await uploadImageToSupabase();
 
-    // if (image_url) {
-    //   console.log("Running....");
-    //   let mask = await createMask(image_url);
-    //   if (mask) {
-    //     let job_id = mask.data.job_id;
-    //     let stop = "";
-    //     let run = setInterval(async () => {
-    //       let data = await getMask(job_id);
-    //       console.log(data.data.job_status);
-    //       if (data.data.job_status == "done") {
-    //         stop = data.data.job_status;
-    //         if (data.data.masks) {
-    //           // console.log(data.data.masks);
-    //           data.data.masks.forEach((e) => {
-    //             maskUrl.push(e.url);
-    //           });
-    //         }
-    //         clearInterval(run);
-    //         console.log("image generating...");
-    //         let genarate_img = await generateImage(
-    //           image_url,
-    //           maskUrl,
-    //           type,
-    //           style,
-    //           color,
-    //           noOfdeisign
-    //         );
-    //         console.log("image generated");
-    //         if (genarate_img) {
-    //           if (genarate_img.data.job_id) {
-    //             console.log("getting...");
-    //             let run_generate_imgs = setInterval(async () => {
-    //               let genarate_imgs = await getGeneratedImage(
-    //                 genarate_img.data.job_id
-    //               );
-    //               console.log(genarate_imgs.data.job_status);
-    //               if (genarate_imgs.data.job_status == "done") {
-    //                 // console.log(genarate_imgs.data.generated_images);
-    //                 // setGeneratedImages([
-    //                 //   ...genarate_imgs.data.generated_images,
-    //                 // ]);
-    //                 props.generatedImagesArr(
-    //                   genarate_imgs.data.generated_images
-    //                 );
-    //                 props.manageLoader(false);
-    //                 clearInterval(run_generate_imgs);
-    //               }
-    //             }, 2000);
-    //           }
-    //         }
-    //       }
-    //     }, 2000);
-    //   }
-    // }
+    if (image_url) {
+      console.log("Running....");
+      let mask = await createMask(image_url);
+      if (mask) {
+        let job_id = mask.data.job_id;
+        let stop = "";
+        let run = setInterval(async () => {
+          let data = await getMask(job_id);
+          console.log(data.data.job_status);
+          if (data.data.job_status == "done") {
+            stop = data.data.job_status;
+            if (data.data.masks) {
+              // console.log(data.data.masks);
+              data.data.masks.forEach((e) => {
+                maskUrl.push(e.url);
+              });
+            }
+            clearInterval(run);
+            console.log("image generating...");
+            let genarate_img = await generateImage(
+              image_url,
+              maskUrl,
+              type,
+              style,
+              color,
+              noOfdeisign
+            );
+            console.log("image generated");
+            if (genarate_img) {
+              if (genarate_img.data.job_id) {
+                console.log("getting...");
+                let run_generate_imgs = setInterval(async () => {
+                  let genarate_imgs = await getGeneratedImage(
+                    genarate_img.data.job_id
+                  );
+                  console.log(genarate_imgs.data.job_status);
+                  if (genarate_imgs.data.job_status == "done") {
+                    // console.log(genarate_imgs.data.generated_images);
+                    // setGeneratedImages([
+                    //   ...genarate_imgs.data.generated_images,
+                    // ]);
+                    props.generatedImagesArr(
+                      genarate_imgs.data.generated_images
+                    );
+                    props.manageLoader(false);
+                    clearInterval(run_generate_imgs);
+                  }
+                }, 2000);
+              }
+            }
+          }
+        }, 2000);
+      }
+    }
   };
 
   return (
