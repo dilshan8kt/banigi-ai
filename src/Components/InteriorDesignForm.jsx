@@ -108,7 +108,7 @@ const InteriorDesignForm = (props) => {
     console.log("uploading...");
     let { data } = await supabase.storage
       .from("banigi-ai images")
-      .upload("deisign-images" + "/" + selectedName, selectedFile);
+      .upload("deisign-images" + "/" + window.crypto.randomUUID(), selectedFile);
     if (data) {
       console.log("uploaded");
       return SUPABASE_BUCKET_PATH + data.path;
@@ -174,17 +174,6 @@ const InteriorDesignForm = (props) => {
 
   const handleAi = async (e) => {
     e.preventDefault();
-    // props.generatedImagesArr([
-    //   "https://png.pngtree.com/thumb_back/fh260/background/20230616/pngtree-exterior-design-of-a-modern-house-in-the-city-a-3d-image_3606113.jpg",
-    //   "https://i.pinimg.com/originals/b1/15/18/b11518ccfd6295f09f83b7d4baec7cfd.jpg",
-    //   "https://i.pinimg.com/736x/b4/b9/aa/b4b9aac0fd4a6efd448db56874b15326.jpg"
-    // ]);
-    
-    
-    
-    
-    
-    
     props.manageLoader(true);
     let maskUrl = [];
     let image_url = await uploadImageToSupabase();
