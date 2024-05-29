@@ -23,7 +23,7 @@ button {
 }
 
 .bannerCardDiv {
-  background-color: #43484B;
+  background-color: #43484b;
   text-align: center;
   padding: 20px 15px 20px 15px;
   border-radius: 10px;
@@ -124,11 +124,11 @@ button {
   cursor: pointer;
 }
 .accordion .accordion-item .accordion-content {
-  color: #C79952;
+  color: #c79952;
 }
 
 .tryDesignFormDiv {
-  background-color: #43484B;
+  background-color: #43484b;
 }
 .tryDesignFormDiv form .tryDesignFile {
   display: flex;
@@ -188,7 +188,8 @@ button {
     font-size: 16px;
   }
 }
-.tryDesignFormDiv form .selectOptionDiv .css-om084u-control, .tryDesignFormDiv form .selectOptionDiv .css-ibfo6y-control {
+.tryDesignFormDiv form .selectOptionDiv .css-om084u-control,
+.tryDesignFormDiv form .selectOptionDiv .css-ibfo6y-control {
   background-color: #576072;
 }
 .tryDesignFormDiv form .selectOptionDiv .css-ibfo6y-control {
@@ -224,24 +225,28 @@ button {
 }
 .tryDesignFormDiv form .selectOptionDiv .intervation_radio div input {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 30px;
   height: 30px;
-  border: 2px solid #C79952;
+  border: 2px solid #c79952;
   border-radius: 50%;
   cursor: pointer;
-  background-color: #43484B;
+  background-color: #43484b;
 }
 .tryDesignFormDiv form .selectOptionDiv .intervation_radio div input:checked {
-  background-color: #C79952;
+  background-color: #c79952;
 }
 .tryDesignFormDiv form .selectOptionDiv .intervation_radio div label {
   font-size: 14px;
   font-weight: 400;
   font-family: "Lato", sans-serif;
 }
-.tryDesignFormDiv form .selectOptionDiv .intervation_radio div:last-child::after {
+.tryDesignFormDiv
+  form
+  .selectOptionDiv
+  .intervation_radio
+  div:last-child::after {
   display: none;
 }
 .tryDesignFormDiv form .selectOptionDiv .customAiIntervationForm {
@@ -249,22 +254,36 @@ button {
   display: flex;
   flex-direction: column;
 }
-.tryDesignFormDiv form .selectOptionDiv .customAiIntervationForm .customAiIntervationLabel {
+.tryDesignFormDiv
+  form
+  .selectOptionDiv
+  .customAiIntervationForm
+  .customAiIntervationLabel {
   display: flex;
   gap: 15px;
 }
-.tryDesignFormDiv form .selectOptionDiv .customAiIntervationForm .customAiIntervationLabel input[type=checkbox] {
+.tryDesignFormDiv
+  form
+  .selectOptionDiv
+  .customAiIntervationForm
+  .customAiIntervationLabel
+  input[type="checkbox"] {
   -moz-appearance: none;
-       appearance: none;
+  appearance: none;
   -webkit-appearance: none;
   width: 25px;
   height: 25px;
-  border: 1px solid #C79952;
+  border: 1px solid #c79952;
   border-radius: 4px;
   cursor: pointer;
   position: relative;
 }
-.tryDesignFormDiv form .selectOptionDiv .customAiIntervationForm .customAiIntervationLabel input[type=checkbox]:checked {
+.tryDesignFormDiv
+  form
+  .selectOptionDiv
+  .customAiIntervationForm
+  .customAiIntervationLabel
+  input[type="checkbox"]:checked {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23C79952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>');
   background-repeat: no-repeat;
   background-position: center;
@@ -278,7 +297,11 @@ button {
   color: white;
   padding: 10px;
 }
-.tryDesignFormDiv form .selectOptionDiv .customAiIntervationForm ::-moz-placeholder {
+.tryDesignFormDiv
+  form
+  .selectOptionDiv
+  .customAiIntervationForm
+  ::-moz-placeholder {
   color: rgb(255, 255, 255) !important;
 }
 .tryDesignFormDiv form .selectOptionDiv .customAiIntervationForm ::placeholder {
@@ -356,7 +379,7 @@ button {
 }
 
 .primary_btn {
-  background-color: #C79952;
+  background-color: #c79952;
   color: white;
   padding: 15px 0px;
   border-radius: 10px;
@@ -369,11 +392,11 @@ button {
   padding: 15px 0px;
   border-radius: 10px;
   font-size: 17px;
-  border: 1px solid #C79952;
+  border: 1px solid #c79952;
   transition: background-color 0.1s;
 }
 .secondary_btn:hover {
-  background-color: #C79952;
+  background-color: #c79952;
 }
 
 .ModalContainer .loginModalOverlay {
@@ -398,7 +421,7 @@ button {
   border-radius: 30px;
   width: 85%;
   max-width: 1280px;
-  background-color: #43484B;
+  background-color: #43484b;
   margin: auto;
 }
 .ModalContainer .loginModalOverlay .LoginModalContainer .closeIcon {
@@ -423,22 +446,39 @@ button {
     width: 85%;
   }
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginLeftDiv {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginLeftDiv {
   width: 50%;
   display: flex;
   align-items: center;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginLeftDiv img {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginLeftDiv
+  img {
   width: 100%;
   max-width: -moz-fit-content;
   max-width: fit-content;
 }
 @media (max-width: 992px) {
-  .ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginLeftDiv {
+  .ModalContainer
+    .loginModalOverlay
+    .LoginModalContainer
+    .loginModalDiv
+    .LoginLeftDiv {
     display: none;
   }
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -446,53 +486,115 @@ button {
   max-width: 347px;
 }
 @media (max-width: 992px) {
-  .ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv {
+  .ModalContainer
+    .loginModalOverlay
+    .LoginModalContainer
+    .loginModalDiv
+    .LoginRightDiv {
     width: 90%;
     justify-content: center;
     margin: auto;
   }
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .loginLogo {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .loginLogo {
   text-align: center;
   margin-bottom: 40px;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .loginLogo img {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .loginLogo
+  img {
   width: 251px;
 }
 @media (max-width: 1200px) {
-  .ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .loginLogo img {
+  .ModalContainer
+    .loginModalOverlay
+    .LoginModalContainer
+    .loginModalDiv
+    .LoginRightDiv
+    .loginLogo
+    img {
     width: 220px;
   }
 }
 @media (max-width: 992px) {
-  .ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .loginLogo img {
+  .ModalContainer
+    .loginModalOverlay
+    .LoginModalContainer
+    .loginModalDiv
+    .LoginRightDiv
+    .loginLogo
+    img {
     width: 200px;
   }
 }
 @media (max-width: 576px) {
-  .ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .loginLogo img {
+  .ModalContainer
+    .loginModalOverlay
+    .LoginModalContainer
+    .loginModalDiv
+    .LoginRightDiv
+    .loginLogo
+    img {
     width: 180px;
   }
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .login_text {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .login_text {
   font-family: "Lato", sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 500;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .login_text span {
-  color: #C79952;
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .login_text
+  span {
+  color: #c79952;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .LoginForm {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .LoginForm {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .LoginForm form {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .LoginForm
+  form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .LoginForm form input {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .LoginForm
+  form
+  input {
   padding: 15px;
   border-radius: 10px;
   border: 1px solid white;
@@ -501,29 +603,64 @@ button {
   background: transparent;
   width: 100%;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .LoginForm form input::-moz-placeholder {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .LoginForm
+  form
+  input::-moz-placeholder {
   color: white;
   font-size: 12px;
   font-weight: 400;
   font-family: "Lato", sans-serif;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .LoginForm form input::placeholder {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .LoginForm
+  form
+  input::placeholder {
   color: white;
   font-size: 12px;
   font-weight: 400;
   font-family: "Lato", sans-serif;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .LoginForm form .passwordField {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .LoginForm
+  form
+  .passwordField {
   position: relative;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .LoginForm form .eyeIcon {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .LoginForm
+  form
+  .eyeIcon {
   right: 12px;
   top: 12px;
   position: absolute;
   width: 22px;
   cursor: pointer;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .LoginForm form span {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .LoginForm
+  form
+  span {
   font-weight: 400;
   font-size: 14px;
   font-family: "Lato", sans-serif;
@@ -531,11 +668,23 @@ button {
   cursor: pointer;
   opacity: 0.6;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .LoginForm form button {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .LoginForm
+  form
+  button {
   margin-top: 20px;
   width: 100%;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .loginTextCenter {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .loginTextCenter {
   display: flex;
   justify-content: center;
   font-family: "Lato", sans-serif;
@@ -543,7 +692,12 @@ button {
   font-size: 14px;
   opacity: 60%;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .dha_line {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .dha_line {
   display: flex;
   justify-content: center;
   font-family: "Lato", sans-serif;
@@ -551,15 +705,32 @@ button {
   font-size: 14px;
   color: white;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .dha_line .loginTextCenter2 {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .dha_line
+  .loginTextCenter2 {
   opacity: 60%;
   margin-right: 6px;
   cursor: text;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .dha_line span {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .dha_line
+  span {
   cursor: pointer;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .socialLogin {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .socialLogin {
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
@@ -568,7 +739,13 @@ button {
   flex-wrap: wrap;
   gap: 10px;
 }
-.ModalContainer .loginModalOverlay .LoginModalContainer .loginModalDiv .LoginRightDiv .socialLogin img {
+.ModalContainer
+  .loginModalOverlay
+  .LoginModalContainer
+  .loginModalDiv
+  .LoginRightDiv
+  .socialLogin
+  img {
   max-width: 40%;
   cursor: pointer;
 }
@@ -601,7 +778,7 @@ button {
   background-color: white;
   border-radius: 30px;
   width: 75%;
-  background-color: #43484B;
+  background-color: #43484b;
   padding: 50px;
   margin: auto;
 }
@@ -681,7 +858,7 @@ button {
   font-weight: 600;
 }
 .dash_CustomDesign .dash_CustomDesignForm .dash_CustomDesginFirst div textarea {
-  background-color: #43484B;
+  background-color: #43484b;
   border: none;
   border-radius: 10px;
   resize: none;
@@ -689,25 +866,42 @@ button {
   padding: 15px;
   min-height: 123px;
 }
-.dash_CustomDesign .dash_CustomDesignForm .dash_CustomDesginFirst div textarea::-moz-placeholder {
+.dash_CustomDesign
+  .dash_CustomDesignForm
+  .dash_CustomDesginFirst
+  div
+  textarea::-moz-placeholder {
   font-size: 14px;
   font-weight: 400;
   color: rgb(255, 255, 255) !important;
   font-family: "Lato", sans-serif;
 }
-.dash_CustomDesign .dash_CustomDesignForm .dash_CustomDesginFirst div textarea::placeholder {
+.dash_CustomDesign
+  .dash_CustomDesignForm
+  .dash_CustomDesginFirst
+  div
+  textarea::placeholder {
   font-size: 14px;
   font-weight: 400;
   color: rgb(255, 255, 255) !important;
   font-family: "Lato", sans-serif;
 }
-.dash_CustomDesign .dash_CustomDesignForm .dash_CustomDesginFirst div .dash_CustomDesign_exam_btn {
+.dash_CustomDesign
+  .dash_CustomDesignForm
+  .dash_CustomDesginFirst
+  div
+  .dash_CustomDesign_exam_btn {
   margin-top: 22px;
 }
-.dash_CustomDesign .dash_CustomDesignForm .dash_CustomDesginFirst div .dash_CustomDesign_exam_btn button {
+.dash_CustomDesign
+  .dash_CustomDesignForm
+  .dash_CustomDesginFirst
+  div
+  .dash_CustomDesign_exam_btn
+  button {
   font-weight: 500;
   font-size: 14px;
-  background: #43484B;
+  background: #43484b;
   color: white;
   min-height: 70px;
   padding: 15px 20px;
@@ -716,9 +910,14 @@ button {
   align-items: center;
   justify-content: space-between;
 }
-.dash_CustomDesign .dash_CustomDesignForm .dash_CustomDesginFirst div .dash_customDesign_exam p {
+.dash_CustomDesign
+  .dash_CustomDesignForm
+  .dash_CustomDesginFirst
+  div
+  .dash_customDesign_exam
+  p {
   border-radius: 8px;
-  background: #43484B;
+  background: #43484b;
   color: white;
   padding: 15px 10px;
 }
@@ -745,7 +944,10 @@ button {
     width: 100%;
   }
 }
-.dash_CustomDesign .dash_CustomDesignForm .ExteriorDesignFileDiv .ExteriorDesignFile {
+.dash_CustomDesign
+  .dash_CustomDesignForm
+  .ExteriorDesignFileDiv
+  .ExteriorDesignFile {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -754,15 +956,23 @@ button {
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
   position: relative;
-  background-color: #43484B;
+  background-color: #43484b;
 }
-.dash_CustomDesign .dash_CustomDesignForm .ExteriorDesignFileDiv .ExteriorDesignFile .uploadedImage {
+.dash_CustomDesign
+  .dash_CustomDesignForm
+  .ExteriorDesignFileDiv
+  .ExteriorDesignFile
+  .uploadedImage {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
-.dash_CustomDesign .dash_CustomDesignForm .ExteriorDesignFileDiv .ExteriorDesignFile span {
+.dash_CustomDesign
+  .dash_CustomDesignForm
+  .ExteriorDesignFileDiv
+  .ExteriorDesignFile
+  span {
   padding: 0px 50px;
   display: flex;
   gap: 10px;
@@ -772,10 +982,19 @@ button {
   text-align: center;
   font-weight: 400;
 }
-.dash_CustomDesign .dash_CustomDesignForm .ExteriorDesignFileDiv .ExteriorDesignFile span svg {
+.dash_CustomDesign
+  .dash_CustomDesignForm
+  .ExteriorDesignFileDiv
+  .ExteriorDesignFile
+  span
+  svg {
   min-width: 21.5px;
 }
-.dash_CustomDesign .dash_CustomDesignForm .ExteriorDesignFileDiv .ExteriorDesignFile input {
+.dash_CustomDesign
+  .dash_CustomDesignForm
+  .ExteriorDesignFileDiv
+  .ExteriorDesignFile
+  input {
   display: block;
   height: 100%;
   width: 100%;
@@ -788,16 +1007,22 @@ button {
   cursor: pointer;
 }
 @media (max-width: 768px) {
-  .dash_CustomDesign .dash_CustomDesignForm .ExteriorDesignFileDiv .ExteriorDesignFile {
+  .dash_CustomDesign
+    .dash_CustomDesignForm
+    .ExteriorDesignFileDiv
+    .ExteriorDesignFile {
     width: 100%;
     height: 50%;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 0px;
   }
 }
-.dash_CustomDesign .dash_CustomDesignForm .ExteriorDesignFileDiv .ExteriorDesignFileImg {
+.dash_CustomDesign
+  .dash_CustomDesignForm
+  .ExteriorDesignFileDiv
+  .ExteriorDesignFileImg {
   width: 50%;
-  background: #6A7074;
+  background: #6a7074;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
   display: flex;
@@ -805,7 +1030,10 @@ button {
   justify-content: center;
 }
 @media (max-width: 768px) {
-  .dash_CustomDesign .dash_CustomDesignForm .ExteriorDesignFileDiv .ExteriorDesignFileImg {
+  .dash_CustomDesign
+    .dash_CustomDesignForm
+    .ExteriorDesignFileDiv
+    .ExteriorDesignFileImg {
     width: 100%;
     border-top-right-radius: 0px;
     border-bottom-left-radius: 25px;
@@ -858,32 +1086,80 @@ button {
   flex-wrap: wrap;
   flex-basis: calc(33.33% - 20px);
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst > div .css-ibfo6y-control,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond > div .css-ibfo6y-control {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  > div
+  .css-ibfo6y-control,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  > div
+  .css-ibfo6y-control {
   outline: none;
   box-shadow: unset;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst > div .react-select__dropdown-indicator,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst > div .react-select__indicator-separator,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond > div .react-select__dropdown-indicator,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond > div .react-select__indicator-separator {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  > div
+  .react-select__dropdown-indicator,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  > div
+  .react-select__indicator-separator,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  > div
+  .react-select__dropdown-indicator,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  > div
+  .react-select__indicator-separator {
   display: none;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst > div label,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond > div label {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  > div
+  label,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  > div
+  label {
   font-size: 20px;
   font-weight: 600;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst > div .intervation_radio,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond > div .intervation_radio {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  > div
+  .intervation_radio,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  > div
+  .intervation_radio {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   position: relative;
   flex-wrap: nowrap;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst > div .intervation_radio::after,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond > div .intervation_radio::after {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  > div
+  .intervation_radio::after,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  > div
+  .intervation_radio::after {
   content: "";
   position: absolute;
   top: 13%;
@@ -893,8 +1169,18 @@ button {
   width: 88%;
   background-color: white;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst > div .intervation_radio div,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond > div .intervation_radio div {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  > div
+  .intervation_radio
+  div,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  > div
+  .intervation_radio
+  div {
   z-index: 3;
   position: relative;
   display: flex;
@@ -902,65 +1188,153 @@ button {
   flex-direction: column;
   gap: 5px;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst > div .intervation_radio div input,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond > div .intervation_radio div input {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  > div
+  .intervation_radio
+  div
+  input,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  > div
+  .intervation_radio
+  div
+  input {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 23px;
   height: 23px;
-  border: 2px solid #C79952;
+  border: 2px solid #c79952;
   border-radius: 50%;
   cursor: pointer;
-  background-color: #43484B;
+  background-color: #43484b;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst > div .intervation_radio div input:checked,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond > div .intervation_radio div input:checked {
-  background-color: #C79952;
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  > div
+  .intervation_radio
+  div
+  input:checked,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  > div
+  .intervation_radio
+  div
+  input:checked {
+  background-color: #c79952;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst > div .intervation_radio div label,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond > div .intervation_radio div label {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  > div
+  .intervation_radio
+  div
+  label,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  > div
+  .intervation_radio
+  div
+  label {
   font-family: "Lato", sans-serif;
   margin-top: 20px;
   font-size: 14px;
   font-weight: 400;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst > div .intervation_radio div:last-child::after,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond > div .intervation_radio div:last-child::after {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  > div
+  .intervation_radio
+  div:last-child::after,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  > div
+  .intervation_radio
+  div:last-child::after {
   display: none;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst .customAiIntervationForm,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond .customAiIntervationForm {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  .customAiIntervationForm,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  .customAiIntervationForm {
   flex-wrap: nowrap;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst .customAiIntervationForm .customAiIntervationLabel,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond .customAiIntervationForm .customAiIntervationLabel {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  .customAiIntervationForm
+  .customAiIntervationLabel,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  .customAiIntervationForm
+  .customAiIntervationLabel {
   display: flex;
   flex-direction: row;
   gap: 15px;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst .customAiIntervationForm .customAiIntervationLabel input[type=checkbox],
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond .customAiIntervationForm .customAiIntervationLabel input[type=checkbox] {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  .customAiIntervationForm
+  .customAiIntervationLabel
+  input[type="checkbox"],
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  .customAiIntervationForm
+  .customAiIntervationLabel
+  input[type="checkbox"] {
   -moz-appearance: none;
-       appearance: none;
+  appearance: none;
   -webkit-appearance: none;
   width: 25px;
   height: 25px;
   border-radius: 4px;
-  border: 1px solid #C79952;
+  border: 1px solid #c79952;
   cursor: pointer;
   position: relative;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst .customAiIntervationForm .customAiIntervationLabel input[type=checkbox]:checked,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond .customAiIntervationForm .customAiIntervationLabel input[type=checkbox]:checked {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  .customAiIntervationForm
+  .customAiIntervationLabel
+  input[type="checkbox"]:checked,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  .customAiIntervationForm
+  .customAiIntervationLabel
+  input[type="checkbox"]:checked {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23C79952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 75%;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst .customAiIntervationForm textarea,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond .customAiIntervationForm textarea {
-  background-color: #43484B;
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  .customAiIntervationForm
+  textarea,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  .customAiIntervationForm
+  textarea {
+  background-color: #43484b;
   border: none;
   border-radius: 10px;
   resize: none;
@@ -968,14 +1342,31 @@ button {
   padding: 15px;
   min-height: 123px;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst .customAiIntervationForm ::-moz-placeholder, .dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond .customAiIntervationForm ::-moz-placeholder {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  .customAiIntervationForm
+  ::-moz-placeholder,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  .customAiIntervationForm
+  ::-moz-placeholder {
   font-size: 14px;
   font-weight: 400;
   color: rgb(255, 255, 255) !important;
   font-family: "Lato", sans-serif;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignFirst .customAiIntervationForm ::placeholder,
-.dash_ExteriorDesign .dash_ExteriorDesignForm .dash_ExteriorDesignSecond .customAiIntervationForm ::placeholder {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignFirst
+  .customAiIntervationForm
+  ::placeholder,
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .dash_ExteriorDesignSecond
+  .customAiIntervationForm
+  ::placeholder {
   font-size: 14px;
   font-weight: 400;
   color: rgb(255, 255, 255) !important;
@@ -1004,7 +1395,10 @@ button {
     width: 100%;
   }
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .ExteriorDesignFileDiv .ExteriorDesignFile {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .ExteriorDesignFileDiv
+  .ExteriorDesignFile {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -1013,15 +1407,23 @@ button {
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
   position: relative;
-  background-color: #43484B;
+  background-color: #43484b;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .ExteriorDesignFileDiv .ExteriorDesignFile .uploadedImage {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .ExteriorDesignFileDiv
+  .ExteriorDesignFile
+  .uploadedImage {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .ExteriorDesignFileDiv .ExteriorDesignFile span {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .ExteriorDesignFileDiv
+  .ExteriorDesignFile
+  span {
   padding: 0px 50px;
   display: flex;
   gap: 10px;
@@ -1031,10 +1433,19 @@ button {
   text-align: center;
   font-weight: 400;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .ExteriorDesignFileDiv .ExteriorDesignFile span svg {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .ExteriorDesignFileDiv
+  .ExteriorDesignFile
+  span
+  svg {
   min-width: 21.5px;
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .ExteriorDesignFileDiv .ExteriorDesignFile input {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .ExteriorDesignFileDiv
+  .ExteriorDesignFile
+  input {
   display: block;
   height: 100%;
   width: 100%;
@@ -1047,16 +1458,22 @@ button {
   cursor: pointer;
 }
 @media (max-width: 768px) {
-  .dash_ExteriorDesign .dash_ExteriorDesignForm .ExteriorDesignFileDiv .ExteriorDesignFile {
+  .dash_ExteriorDesign
+    .dash_ExteriorDesignForm
+    .ExteriorDesignFileDiv
+    .ExteriorDesignFile {
     width: 100%;
     height: 50%;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 0px;
   }
 }
-.dash_ExteriorDesign .dash_ExteriorDesignForm .ExteriorDesignFileDiv .ExteriorDesignFileImg {
+.dash_ExteriorDesign
+  .dash_ExteriorDesignForm
+  .ExteriorDesignFileDiv
+  .ExteriorDesignFileImg {
   width: 50%;
-  background: #6A7074;
+  background: #6a7074;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
   display: flex;
@@ -1064,7 +1481,10 @@ button {
   justify-content: center;
 }
 @media (max-width: 768px) {
-  .dash_ExteriorDesign .dash_ExteriorDesignForm .ExteriorDesignFileDiv .ExteriorDesignFileImg {
+  .dash_ExteriorDesign
+    .dash_ExteriorDesignForm
+    .ExteriorDesignFileDiv
+    .ExteriorDesignFileImg {
     width: 100%;
     border-top-right-radius: 0px;
     border-bottom-left-radius: 25px;
@@ -1118,32 +1538,80 @@ button {
   flex-wrap: wrap;
   flex-basis: calc(33.33% - 20px);
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignFirst > div .css-ibfo6y-control,
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignSecond > div .css-ibfo6y-control {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignFirst
+  > div
+  .css-ibfo6y-control,
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignSecond
+  > div
+  .css-ibfo6y-control {
   outline: none;
   box-shadow: unset;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignFirst > div .react-select__dropdown-indicator,
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignFirst > div .react-select__indicator-separator,
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignSecond > div .react-select__dropdown-indicator,
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignSecond > div .react-select__indicator-separator {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignFirst
+  > div
+  .react-select__dropdown-indicator,
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignFirst
+  > div
+  .react-select__indicator-separator,
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignSecond
+  > div
+  .react-select__dropdown-indicator,
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignSecond
+  > div
+  .react-select__indicator-separator {
   display: none;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignFirst > div label,
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignSecond > div label {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignFirst
+  > div
+  label,
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignSecond
+  > div
+  label {
   font-size: 20px;
   font-weight: 600;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignFirst > div .intervation_radio,
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignSecond > div .intervation_radio {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignFirst
+  > div
+  .intervation_radio,
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignSecond
+  > div
+  .intervation_radio {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   position: relative;
   flex-wrap: nowrap;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignFirst > div .intervation_radio::after,
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignSecond > div .intervation_radio::after {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignFirst
+  > div
+  .intervation_radio::after,
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignSecond
+  > div
+  .intervation_radio::after {
   content: "";
   position: absolute;
   top: 13%;
@@ -1153,8 +1621,18 @@ button {
   width: 88%;
   background-color: white;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignFirst > div .intervation_radio div,
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignSecond > div .intervation_radio div {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignFirst
+  > div
+  .intervation_radio
+  div,
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignSecond
+  > div
+  .intervation_radio
+  div {
   z-index: 3;
   position: relative;
   display: flex;
@@ -1162,30 +1640,76 @@ button {
   flex-direction: column;
   gap: 5px;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignFirst > div .intervation_radio div input,
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignSecond > div .intervation_radio div input {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignFirst
+  > div
+  .intervation_radio
+  div
+  input,
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignSecond
+  > div
+  .intervation_radio
+  div
+  input {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 23px;
   height: 23px;
-  border: 2px solid #C79952;
+  border: 2px solid #c79952;
   border-radius: 50%;
   cursor: pointer;
-  background-color: #43484B;
+  background-color: #43484b;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignFirst > div .intervation_radio div input:checked,
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignSecond > div .intervation_radio div input:checked {
-  background-color: #C79952;
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignFirst
+  > div
+  .intervation_radio
+  div
+  input:checked,
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignSecond
+  > div
+  .intervation_radio
+  div
+  input:checked {
+  background-color: #c79952;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignFirst > div .intervation_radio div label,
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignSecond > div .intervation_radio div label {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignFirst
+  > div
+  .intervation_radio
+  div
+  label,
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignSecond
+  > div
+  .intervation_radio
+  div
+  label {
   margin-top: 20px;
   font-size: 14px;
   font-weight: 400;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignFirst > div .intervation_radio div:last-child::after,
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignSecond > div .intervation_radio div:last-child::after {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignFirst
+  > div
+  .intervation_radio
+  div:last-child::after,
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignSecond
+  > div
+  .intervation_radio
+  div:last-child::after {
   display: none;
 }
 .dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignThird {
@@ -1193,7 +1717,10 @@ button {
   justify-content: space-between;
   margin-top: 15px;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignThird .customAiIntervationForm {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignThird
+  .customAiIntervationForm {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1201,37 +1728,63 @@ button {
   flex-basis: calc(33.33% - 20px);
 }
 @media (max-width: 992px) {
-  .dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignThird .customAiIntervationForm {
+  .dash_InteriorDesign
+    .dash_interiorDesignForm
+    .dash_interiorDesignThird
+    .customAiIntervationForm {
     flex-basis: 100%;
   }
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignThird .customAiIntervationForm .customAiIntervationLabel {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignThird
+  .customAiIntervationForm
+  .customAiIntervationLabel {
   display: flex;
   gap: 15px;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignThird .customAiIntervationForm .customAiIntervationLabel input[type=checkbox] {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignThird
+  .customAiIntervationForm
+  .customAiIntervationLabel
+  input[type="checkbox"] {
   -moz-appearance: none;
-       appearance: none;
+  appearance: none;
   -webkit-appearance: none;
   width: 25px;
   height: 25px;
-  border: 1px solid #C79952;
+  border: 1px solid #c79952;
   border-radius: 4px;
   cursor: pointer;
   position: relative;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignThird .customAiIntervationForm .customAiIntervationLabel input[type=checkbox]:checked {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignThird
+  .customAiIntervationForm
+  .customAiIntervationLabel
+  input[type="checkbox"]:checked {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23C79952" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 75%;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignThird .customAiIntervationForm .customAiIntervationLabel label {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignThird
+  .customAiIntervationForm
+  .customAiIntervationLabel
+  label {
   font-size: 20px;
   font-weight: 600;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignThird .customAiIntervationForm textarea {
-  background-color: #43484B;
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignThird
+  .customAiIntervationForm
+  textarea {
+  background-color: #43484b;
   border: none;
   border-radius: 10px;
   resize: none;
@@ -1239,13 +1792,21 @@ button {
   padding: 15px;
   min-height: 123px;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignThird .customAiIntervationForm ::-moz-placeholder {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignThird
+  .customAiIntervationForm
+  ::-moz-placeholder {
   font-size: 14px;
   font-weight: 400;
   color: rgb(255, 255, 255) !important;
   font-family: "Lato", sans-serif;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .dash_interiorDesignThird .customAiIntervationForm ::placeholder {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .dash_interiorDesignThird
+  .customAiIntervationForm
+  ::placeholder {
   font-size: 14px;
   font-weight: 400;
   color: rgb(255, 255, 255) !important;
@@ -1274,7 +1835,10 @@ button {
     width: 100%;
   }
 }
-.dash_InteriorDesign .dash_interiorDesignForm .interiorDesignFileDiv .interiorDesignFile {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .interiorDesignFileDiv
+  .interiorDesignFile {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -1283,15 +1847,23 @@ button {
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
   position: relative;
-  background-color: #43484B;
+  background-color: #43484b;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .interiorDesignFileDiv .interiorDesignFile .uploadedImage {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .interiorDesignFileDiv
+  .interiorDesignFile
+  .uploadedImage {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .interiorDesignFileDiv .interiorDesignFile span {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .interiorDesignFileDiv
+  .interiorDesignFile
+  span {
   padding: 0px 50px;
   display: flex;
   gap: 10px;
@@ -1301,10 +1873,19 @@ button {
   text-align: center;
   font-weight: 400;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .interiorDesignFileDiv .interiorDesignFile span svg {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .interiorDesignFileDiv
+  .interiorDesignFile
+  span
+  svg {
   min-width: 21.5px;
 }
-.dash_InteriorDesign .dash_interiorDesignForm .interiorDesignFileDiv .interiorDesignFile input {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .interiorDesignFileDiv
+  .interiorDesignFile
+  input {
   display: block;
   height: 100%;
   width: 100%;
@@ -1317,14 +1898,20 @@ button {
   cursor: pointer;
 }
 @media (max-width: 768px) {
-  .dash_InteriorDesign .dash_interiorDesignForm .interiorDesignFileDiv .interiorDesignFile {
+  .dash_InteriorDesign
+    .dash_interiorDesignForm
+    .interiorDesignFileDiv
+    .interiorDesignFile {
     width: 100%;
     height: 50%;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 0px;
   }
 }
-.dash_InteriorDesign .dash_interiorDesignForm .interiorDesignFileDiv .interiorDesignFileImg {
+.dash_InteriorDesign
+  .dash_interiorDesignForm
+  .interiorDesignFileDiv
+  .interiorDesignFileImg {
   width: 50%;
   background: #6a7074;
   border-top-right-radius: 25px;
@@ -1334,7 +1921,10 @@ button {
   justify-content: center;
 }
 @media (max-width: 768px) {
-  .dash_InteriorDesign .dash_interiorDesignForm .interiorDesignFileDiv .interiorDesignFileImg {
+  .dash_InteriorDesign
+    .dash_interiorDesignForm
+    .interiorDesignFileDiv
+    .interiorDesignFileImg {
     width: 100%;
     border-top-right-radius: 0px;
     border-bottom-left-radius: 25px;
@@ -1377,13 +1967,13 @@ button {
 }
 .myDesignSection .tabs-container .tab-heading button {
   background-color: transparent;
-  border: 1px solid #C79952;
+  border: 1px solid #c79952;
   color: white;
   padding: 15px 20px;
   border-radius: 10px;
 }
 .myDesignSection .tabs-container .tab-heading button.active {
-  background-color: #C79952;
+  background-color: #c79952;
 }
 @media (max-width: 768px) {
   .myDesignSection .tabs-container .tab_content_div {
@@ -1427,11 +2017,13 @@ button {
     margin-bottom: 100px;
   }
 }
-.dash_pricing_section .dash_pricing_bottom > *:nth-child(1), .dash_pricing_section .dash_pricing_bottom > *:nth-child(3) {
+.dash_pricing_section .dash_pricing_bottom > *:nth-child(1),
+.dash_pricing_section .dash_pricing_bottom > *:nth-child(3) {
   align-self: start;
 }
 @media (max-width: 992px) {
-  .dash_pricing_section .dash_pricing_bottom > *:nth-child(1), .dash_pricing_section .dash_pricing_bottom > *:nth-child(3) {
+  .dash_pricing_section .dash_pricing_bottom > *:nth-child(1),
+  .dash_pricing_section .dash_pricing_bottom > *:nth-child(3) {
     align-self: unset;
   }
 }
@@ -1508,7 +2100,7 @@ button {
 }
 
 .footer_Section {
-  background-color: #43484B;
+  background-color: #43484b;
   padding: 60px 80px;
   color: white;
 }
@@ -1617,11 +2209,11 @@ button {
   font-size: 18px;
 }
 .footer_Section .footer_div .footer_right ul li:hover {
-  color: #C79952;
+  color: #c79952;
 }
 
 .copyright_div {
-  background-color: #343A45;
+  background-color: #343a45;
   color: white;
   text-align: center;
   padding: 20px 0px;
@@ -1643,13 +2235,14 @@ button {
 }
 
 nav {
-  background-color: #43484B;
+  background-color: #43484b;
   color: white;
   font-size: 18px;
   position: fixed;
   z-index: 10;
   width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 }
 @media (max-width: 1200px) {
   nav {
@@ -1696,26 +2289,26 @@ nav .navbar .nav_links ul li {
   position: relative;
 }
 nav .navbar .nav_links ul li:hover {
-  color: #C79952;
+  color: #c79952;
 }
 nav .navbar .nav_links ul li:hover::after {
   content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
-  border-bottom: 2px solid #C79952;
+  border-bottom: 2px solid #c79952;
   width: 50%;
 }
 nav .navbar .nav_links ul .active_navLink {
   position: relative;
-  color: #C79952;
+  color: #c79952;
 }
 nav .navbar .nav_links ul .active_navLink::after {
   content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
-  border-bottom: 2px solid #C79952;
+  border-bottom: 2px solid #c79952;
   width: 50%;
 }
 @media (max-width: 992px) {
@@ -1744,7 +2337,7 @@ nav .navbar .nav_button .login_btn {
   }
 }
 nav .navbar .nav_button .getStarted_btn {
-  background-color: #C79952;
+  background-color: #c79952;
   color: white;
   padding: 15px;
   border-radius: 8px;
@@ -1769,7 +2362,7 @@ nav .navbar .nav_button .mobilemenu {
   }
 }
 nav .mobile_navbar {
-  background-color: #43484B;
+  background-color: #43484b;
   color: white;
   width: 100%;
   z-index: 2;
@@ -1786,14 +2379,14 @@ nav .mobile_navbar ul li {
   transition: background-color 0.1s;
 }
 nav .mobile_navbar ul :hover {
-  background-color: #C79952;
+  background-color: #c79952;
 }
 nav .mobile_navbar .login_btn {
   border-bottom: 1px solid rgba(255, 255, 255, 0.8);
 }
 nav .mobile_navbar button {
   width: 100%;
-  background-color: #C79952;
+  background-color: #c79952;
   color: white;
   padding: 15px;
   font-size: 18px;
@@ -1808,7 +2401,7 @@ a:visited {
 }
 
 a:active {
-  color: #C79952;
+  color: #c79952;
 }
 
 .main_banner {
@@ -1888,7 +2481,13 @@ a:active {
     width: 80px;
   }
 }
-.main_banner .main_banner_div .banner_left .banner_left_text h1 .vector_img .vector_icon {
+.main_banner
+  .main_banner_div
+  .banner_left
+  .banner_left_text
+  h1
+  .vector_img
+  .vector_icon {
   width: 100%;
   max-width: 166px;
   height: 18px;
@@ -1897,12 +2496,24 @@ a:active {
   left: 0%;
 }
 @media (max-width: 1200px) {
-  .main_banner .main_banner_div .banner_left .banner_left_text h1 .vector_img .vector_icon {
+  .main_banner
+    .main_banner_div
+    .banner_left
+    .banner_left_text
+    h1
+    .vector_img
+    .vector_icon {
     height: 13px;
   }
 }
 @media (max-width: 576px) {
-  .main_banner .main_banner_div .banner_left .banner_left_text h1 .vector_img .vector_icon {
+  .main_banner
+    .main_banner_div
+    .banner_left
+    .banner_left_text
+    h1
+    .vector_img
+    .vector_icon {
     bottom: -7px;
     height: 10px;
   }
@@ -1974,7 +2585,12 @@ a:active {
   left: 0%;
   bottom: 100%;
 }
-.main_banner .main_banner_div .banner_left .banner_left_text h1 .ani_text::before {
+.main_banner
+  .main_banner_div
+  .banner_left
+  .banner_left_text
+  h1
+  .ani_text::before {
   content: " ";
   display: inline-block;
   position: relative;
@@ -1982,7 +2598,7 @@ a:active {
   /* Increased the duration to accommodate delays */
 }
 .main_banner .main_banner_div .banner_left .banner_left_text h1 span {
-  color: #C79952;
+  color: #c79952;
 }
 .main_banner .main_banner_div .banner_left .banner_left_text p {
   font-family: "Lato", sans-serif;
@@ -2001,26 +2617,46 @@ a:active {
   margin-top: 60px;
   justify-content: center;
 }
-.main_banner .main_banner_div .banner_left .banner_left_text .banner_left_btn .tryBtn {
-  background-color: #C79952;
+.main_banner
+  .main_banner_div
+  .banner_left
+  .banner_left_text
+  .banner_left_btn
+  .tryBtn {
+  background-color: #c79952;
   color: white;
   padding: 12px 17px;
   border-radius: 10px;
   font-size: 20px;
 }
 @media (max-width: 1200px) {
-  .main_banner .main_banner_div .banner_left .banner_left_text .banner_left_btn .tryBtn {
+  .main_banner
+    .main_banner_div
+    .banner_left
+    .banner_left_text
+    .banner_left_btn
+    .tryBtn {
     padding: 15px 20px;
     font-size: 18px;
   }
 }
 @media (max-width: 992px) {
-  .main_banner .main_banner_div .banner_left .banner_left_text .banner_left_btn .tryBtn {
+  .main_banner
+    .main_banner_div
+    .banner_left
+    .banner_left_text
+    .banner_left_btn
+    .tryBtn {
     padding: 15px;
     font-size: 16px;
   }
 }
-.main_banner .main_banner_div .banner_left .banner_left_text .banner_left_btn .watchBtn {
+.main_banner
+  .main_banner_div
+  .banner_left
+  .banner_left_text
+  .banner_left_btn
+  .watchBtn {
   background: transparent;
   display: flex;
   gap: 10px;
@@ -2030,31 +2666,59 @@ a:active {
   text-decoration: underline;
 }
 @media (max-width: 1200px) {
-  .main_banner .main_banner_div .banner_left .banner_left_text .banner_left_btn .watchBtn {
+  .main_banner
+    .main_banner_div
+    .banner_left
+    .banner_left_text
+    .banner_left_btn
+    .watchBtn {
     font-size: 16px;
   }
 }
 @media (max-width: 992px) {
-  .main_banner .main_banner_div .banner_left .banner_left_text .banner_left_btn .watchBtn {
+  .main_banner
+    .main_banner_div
+    .banner_left
+    .banner_left_text
+    .banner_left_btn
+    .watchBtn {
     font-size: 14px;
   }
 }
-.main_banner .main_banner_div .banner_left .banner_left_text .banner_left_btn .watchBtn img {
+.main_banner
+  .main_banner_div
+  .banner_left
+  .banner_left_text
+  .banner_left_btn
+  .watchBtn
+  img {
   width: 58px;
 }
 @media (max-width: 1200px) {
-  .main_banner .main_banner_div .banner_left .banner_left_text .banner_left_btn .watchBtn img {
+  .main_banner
+    .main_banner_div
+    .banner_left
+    .banner_left_text
+    .banner_left_btn
+    .watchBtn
+    img {
     width: 47px;
   }
 }
 @media (max-width: 576px) {
-  .main_banner .main_banner_div .banner_left .banner_left_text .banner_left_btn .watchBtn img {
+  .main_banner
+    .main_banner_div
+    .banner_left
+    .banner_left_text
+    .banner_left_btn
+    .watchBtn
+    img {
     width: 38px;
   }
 }
 
 .DesignGridDiv {
-  background-color: #343A45;
+  background-color: #343a45;
   color: white;
   padding: 60px 70px;
 }
@@ -2098,7 +2762,7 @@ a:active {
   }
 }
 .DesignGridDiv h2 span {
-  color: #C79952;
+  color: #c79952;
 }
 .DesignGridDiv .DesignGridLayout {
   display: grid;
@@ -2143,7 +2807,7 @@ a:active {
 }
 
 .TryDesignDiv {
-  background-color: #43484B;
+  background-color: #43484b;
   padding: 50px;
   color: white;
 }
@@ -2168,7 +2832,7 @@ a:active {
   }
 }
 .TryDesignDiv h3 span {
-  color: #C79952;
+  color: #c79952;
 }
 .TryDesignDiv .tabs-container .tab-heading {
   display: grid;
@@ -2194,7 +2858,7 @@ a:active {
 }
 .TryDesignDiv .tabs-container .tab-heading button {
   background-color: transparent;
-  border: 1px solid #C79952;
+  border: 1px solid #c79952;
   color: white;
   padding: 15px 20px;
   border-radius: 10px;
@@ -2217,7 +2881,7 @@ a:active {
   }
 }
 .TryDesignDiv .tabs-container .tab-heading button.active {
-  background-color: #C79952;
+  background-color: #c79952;
 }
 .TryDesignDiv .tabs-container .tab_content_div {
   margin: 0px auto;
@@ -2273,20 +2937,42 @@ a:active {
   height: 100%;
   padding-bottom: 20px;
 }
-.TryDesignDiv .tabs-container .tab_content_div .swiper-div .swiper .swiper-slide {
+.TryDesignDiv
+  .tabs-container
+  .tab_content_div
+  .swiper-div
+  .swiper
+  .swiper-slide {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.TryDesignDiv .tabs-container .tab_content_div .swiper-div .swiper .swiper-slide img {
+.TryDesignDiv
+  .tabs-container
+  .tab_content_div
+  .swiper-div
+  .swiper
+  .swiper-slide
+  img {
   width: 100%;
   max-width: 550px;
   height: 100%;
 }
-.TryDesignDiv .tabs-container .tab_content_div .swiper-div .swiper .swiper-pagination {
+.TryDesignDiv
+  .tabs-container
+  .tab_content_div
+  .swiper-div
+  .swiper
+  .swiper-pagination {
   bottom: 0px;
 }
-.TryDesignDiv .tabs-container .tab_content_div .swiper-div .swiper .swiper-pagination .swiper-pagination-bullet {
+.TryDesignDiv
+  .tabs-container
+  .tab_content_div
+  .swiper-div
+  .swiper
+  .swiper-pagination
+  .swiper-pagination-bullet {
   background-color: rgb(255, 255, 255);
   display: inline-block;
   width: 0.6rem;
@@ -2294,7 +2980,7 @@ a:active {
 }
 
 .buildJobDiv {
-  background-color: #343A45;
+  background-color: #343a45;
   color: white;
   padding: 60px 70px;
 }
@@ -2319,7 +3005,7 @@ a:active {
   }
 }
 .buildJobDiv h3 span {
-  color: #C79952;
+  color: #c79952;
 }
 .buildJobDiv .top-down-img {
   margin: auto;
@@ -2369,7 +3055,7 @@ a:active {
   height: 100%;
   bottom: -600px;
   border-radius: 7px;
-  background: #43484B;
+  background: #43484b;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -2416,7 +3102,7 @@ a:active {
   }
 }
 .feedback_div h2 span {
-  color: #C79952;
+  color: #c79952;
 }
 .feedback_div .swiper {
   width: 100%;
@@ -2598,7 +3284,7 @@ a:active {
 }
 
 .pricing_section {
-  background-color: #343A45;
+  background-color: #343a45;
   color: white;
   padding-top: 100px;
   padding-bottom: 30px;
@@ -2664,11 +3350,13 @@ a:active {
     align-items: center;
   }
 }
-.pricing_section .pricingDiv .pricing_bottom > *:nth-child(1), .pricing_section .pricingDiv .pricing_bottom > *:nth-child(3) {
+.pricing_section .pricingDiv .pricing_bottom > *:nth-child(1),
+.pricing_section .pricingDiv .pricing_bottom > *:nth-child(3) {
   align-self: start;
 }
 @media (max-width: 992px) {
-  .pricing_section .pricingDiv .pricing_bottom > *:nth-child(1), .pricing_section .pricingDiv .pricing_bottom > *:nth-child(3) {
+  .pricing_section .pricingDiv .pricing_bottom > *:nth-child(1),
+  .pricing_section .pricingDiv .pricing_bottom > *:nth-child(3) {
     align-self: unset;
   }
 }
@@ -2684,7 +3372,7 @@ a:active {
 }
 
 .faqDiv {
-  background-color: #43484B;
+  background-color: #43484b;
   color: white;
   padding: 60px 70px;
 }
@@ -2709,7 +3397,7 @@ a:active {
   }
 }
 .faqDiv h3 span {
-  color: #C79952;
+  color: #c79952;
 }
 .faqDiv .faqList {
   display: flex;
@@ -2733,7 +3421,7 @@ a:active {
 }
 
 .contactUsContainner {
-  background-color: #343A45;
+  background-color: #343a45;
   color: white;
 }
 .contactUsContainner .contactUsSection {
@@ -2758,7 +3446,7 @@ a:active {
   }
 }
 .contactUsContainner .contactUsSection h3 span {
-  color: #C79952;
+  color: #c79952;
 }
 .contactUsContainner .contactusDiv {
   display: flex;
@@ -2866,17 +3554,27 @@ a:active {
   margin-top: 15px;
   margin-bottom: 30px;
 }
-.contactUsContainner .contactusDiv .contactUsRight .contactForm form .submitBtn {
+.contactUsContainner
+  .contactusDiv
+  .contactUsRight
+  .contactForm
+  form
+  .submitBtn {
   padding: 15px;
   min-height: 70px;
-  background-color: #C79952;
+  background-color: #c79952;
   color: white;
   font-weight: 500;
   border-radius: 10px;
   font-size: 20px;
 }
 @media (max-width: 992px) {
-  .contactUsContainner .contactusDiv .contactUsRight .contactForm form .submitBtn {
+  .contactUsContainner
+    .contactusDiv
+    .contactUsRight
+    .contactForm
+    form
+    .submitBtn {
     min-height: 50px;
     font-size: 18px;
   }
@@ -2891,7 +3589,7 @@ a:active {
   }
 }
 .dashboard_container .sidebar_section {
-  background-color: #43484B;
+  background-color: #43484b;
   width: 15vw;
   min-height: 100vh;
   display: flex;
@@ -2934,7 +3632,7 @@ a:active {
   }
 }
 .dashboard_container .sidebar_section .dashboard_links ul li .navLink_bg {
-  background-color: #C79952;
+  background-color: #c79952;
   color: white;
   padding: 17px 0px;
   display: flex;
@@ -2982,7 +3680,7 @@ a:active {
     padding: 0px 10px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    background-color: #C79952;
+    background-color: #c79952;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -2998,7 +3696,7 @@ a:active {
   }
 }
 .dashboard_container .sidebar_section .dashboard_credits {
-  background-color: #C79952;
+  background-color: #c79952;
   padding: 17px 17px;
   display: flex;
   gap: 10px;
@@ -3047,12 +3745,12 @@ a:active {
 .dashboard_container .dashboardPages .myAccountDiv .logout_btn {
   cursor: pointer;
   margin-top: 10px;
-  background-color: #C79952;
+  background-color: #c79952;
   padding: 10px;
   border-radius: 10px;
-}/*# sourceMappingURL=index.css.map */
+} /*# sourceMappingURL=index.css.map */
 
-.ai_image_view{
+.ai_image_view {
   width: 100%;
   height: 100%;
   /* margin-top: 11px; */
@@ -3062,17 +3760,20 @@ a:active {
 /* new design grid */
 
 .NewDesignGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: center;
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr); */
   /* grid-template-rows: repeat(2, 1fr); */
-  gap: 14px;
+  /* gap: 14px;
   max-width: 1274.5px;
-  margin: auto;
+  margin: auto; */
 }
 
 .tryDesignFormDiv .NewDesignGrid img {
-  /* width: 100%;
-  height: 100%; */
-  max-width: 114px;
+  width: 32%;
+  /* height: 100%; */
+  /* max-width: 114px; */
   border-radius: 5px;
+  margin: 5px;
 }

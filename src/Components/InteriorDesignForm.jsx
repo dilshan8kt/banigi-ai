@@ -26,6 +26,7 @@ const InteriorDesignForm = () => {
   const [noOfdeisign, setNoOfDesign] = useState(1);
 
   const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFileDummy, setSelectedFileDummy] = useState("");
   const [selectedName, setSelectedName] = useState("");
   const [interiorSpaces, setInteriorSpaces] = useState([]);
   const [interiorThemes, setInteriorThemes] = useState([]);
@@ -40,6 +41,7 @@ const InteriorDesignForm = () => {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
+    setSelectedFileDummy(URL.createObjectURL(file));
     setSelectedFile(file);
     setSelectedName(file.name);
   };
@@ -99,6 +101,10 @@ const InteriorDesignForm = () => {
       console.log("uploaded");
       return SUPABASE_BUCKET_PATH+data.path;
     }
+  }
+
+  const viewImages = (image) => {
+    setSelectedFileDummy(image)
   }
 
   const InteriorOptions = [
@@ -206,7 +212,7 @@ const InteriorDesignForm = () => {
         <form action="">
           <div className="tryDesignFile" style={selectedFile?{padding:0}:{padding:'80px 35px'}}>
             {
-              selectedFile?<img className="ai_image_view" src={URL.createObjectURL(selectedFile)} alt="" />:null
+              selectedFile?<img className="ai_image_view" src={selectedFileDummy} alt="" />:null
             }
             
             {
@@ -240,7 +246,7 @@ const InteriorDesignForm = () => {
             {
               Object.values(generatedImages).map((e,key)=>{
                 return [
-                  <img src={e} alt="" />
+                  <img style={{cursor:"pointer"}} src={e} alt="" onClick={()=>viewImages(e)} />
                 ]
               })
             }
