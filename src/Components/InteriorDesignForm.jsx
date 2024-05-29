@@ -25,6 +25,7 @@ import {
 import { useEffect } from "react";
 import { supabase } from "../supabase/supabaseClient";
 import { SUPABASE_BUCKET_PATH } from "../constants/config";
+import Swal from "sweetalert2";
 
 const InteriorDesignForm = (props) => {
   const [type, setType] = useState("");
@@ -108,7 +109,10 @@ const InteriorDesignForm = (props) => {
     console.log("uploading...");
     let { data } = await supabase.storage
       .from("banigi-ai images")
-      .upload("deisign-images" + "/" + window.crypto.randomUUID(), selectedFile);
+      .upload(
+        "deisign-images" + "/" + window.crypto.randomUUID(),
+        selectedFile
+      );
     if (data) {
       console.log("uploaded");
       return SUPABASE_BUCKET_PATH + data.path;
@@ -175,62 +179,80 @@ const InteriorDesignForm = (props) => {
   const handleAi = async (e) => {
     e.preventDefault();
     props.manageLoader(true);
-    let maskUrl = [];
-    let image_url = await uploadImageToSupabase();
+    let validate = validateInputs();
+    if (validate) {
+      let maskUrl = [];
+      let image_url = await uploadImageToSupabase();
 
-    if (image_url) {
-      console.log("Running....");
-      let mask = await createMask(image_url);
-      if (mask) {
-        let job_id = mask.data.job_id;
-        let stop = "";
-        let run = setInterval(async () => {
-          let data = await getMask(job_id);
-          console.log(data.data.job_status);
-          if (data.data.job_status == "done") {
-            stop = data.data.job_status;
-            if (data.data.masks) {
-              // console.log(data.data.masks);
-              data.data.masks.forEach((e) => {
-                maskUrl.push(e.url);
-              });
-            }
-            clearInterval(run);
-            console.log("image generating...");
-            let genarate_img = await generateImage(
-              image_url,
-              maskUrl,
-              type,
-              style,
-              color,
-              noOfdeisign
-            );
-            console.log("image generated");
-            if (genarate_img) {
-              if (genarate_img.data.job_id) {
-                console.log("getting...");
-                let run_generate_imgs = setInterval(async () => {
-                  let genarate_imgs = await getGeneratedImage(
-                    genarate_img.data.job_id
-                  );
-                  console.log(genarate_imgs.data.job_status);
-                  if (genarate_imgs.data.job_status == "done") {
-                    // console.log(genarate_imgs.data.generated_images);
-                    // setGeneratedImages([
-                    //   ...genarate_imgs.data.generated_images,
-                    // ]);
-                    props.generatedImagesArr(
-                      genarate_imgs.data.generated_images
+      if (image_url) {
+        console.log("Running....");
+        let mask = await createMask(image_url);
+        if (mask) {
+          let job_id = mask.data.job_id;
+          let stop = "";
+          let run = setInterval(async () => {
+            let data = await getMask(job_id);
+            console.log(data.data.job_status);
+            if (data.data.job_status == "done") {
+              stop = data.data.job_status;
+              if (data.data.masks) {
+                // console.log(data.data.masks);
+                data.data.masks.forEach((e) => {
+                  maskUrl.push(e.url);
+                });
+              }
+              clearInterval(run);
+              console.log("image generating...");
+              let genarate_img = await generateImage(
+                image_url,
+                maskUrl,
+                type,
+                style,
+                color,
+                noOfdeisign
+              );
+              console.log("image generated");
+              if (genarate_img) {
+                if (genarate_img.data.job_id) {
+                  console.log("getting...");
+                  let run_generate_imgs = setInterval(async () => {
+                    let genarate_imgs = await getGeneratedImage(
+                      genarate_img.data.job_id
                     );
-                    props.manageLoader(false);
-                    clearInterval(run_generate_imgs);
-                  }
-                }, 2000);
+                    console.log(genarate_imgs.data.job_status);
+                    if (genarate_imgs.data.job_status == "done") {
+                      // console.log(genarate_imgs.data.generated_images);
+                      // setGeneratedImages([
+                      //   ...genarate_imgs.data.generated_images,
+                      // ]);
+                      props.generatedImagesArr(
+                        genarate_imgs.data.generated_images
+                      );
+                      props.manageLoader(false);
+                      clearInterval(run_generate_imgs);
+                    }
+                  }, 2000);
+                }
               }
             }
-          }
-        }, 2000);
+          }, 2000);
+        }
       }
+    }
+  };
+
+  const validateInputs = () => {
+    if (selectedName == "" || type == "" || style == "" || color == "") {
+      props.manageLoader(false);
+      Swal.fire({
+        title: "",
+        text: "Check all the inputs",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+      return false;
+    } else {
+      return true;
     }
   };
 
