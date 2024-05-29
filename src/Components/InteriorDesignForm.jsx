@@ -40,10 +40,12 @@ const InteriorDesignForm = (props) => {
   },[])
 
   const handleFileChange = (event) => {
+    props.manageLoader(true)
     const file = event.target.files[0];
     setSelectedFileDummy(URL.createObjectURL(file));
     setSelectedFile(file);
     setSelectedName(file.name);
+    props.manageLoader(false)
   };
 
   const getTypes = async () =>{
