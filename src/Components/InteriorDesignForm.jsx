@@ -32,6 +32,7 @@ const InteriorDesignForm = (props) => {
   const [type, setType] = useState("");
   const [style, setStyle] = useState("");
   const [color, setColor] = useState("");
+  const [addtionalPro, setAddtionalPro] = useState("");
   const [noOfdeisign, setNoOfDesign] = useState(1);
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -62,6 +63,7 @@ const InteriorDesignForm = (props) => {
   };
 
   const getTypes = async () => {
+    props.manageLoader(true);
     let spaces = [];
     const types = await getSpaceTypes();
     if (types) {
@@ -97,6 +99,7 @@ const InteriorDesignForm = (props) => {
       });
       setPatterns(colorP);
     }
+    props.manageLoader(false);
   };
 
   const removeChar = (e) => {
@@ -208,12 +211,14 @@ const InteriorDesignForm = (props) => {
               clearInterval(run);
               console.log("image generating...");
               let genarate_img = await generateImage(
+                "interior",
                 image_url,
                 maskUrl,
                 type,
                 style,
                 color,
-                noOfdeisign
+                noOfdeisign,
+                addtionalPro
               );
               console.log("image generated");
               if (genarate_img) {
@@ -250,7 +255,7 @@ const InteriorDesignForm = (props) => {
       props.manageLoader(false);
       Swal.fire({
         title: "",
-        text: "Check all the inputs",
+        text: "Check all the required inputs",
         icon: "warning",
         confirmButtonText: "OK",
         color: "red",
@@ -280,7 +285,7 @@ const InteriorDesignForm = (props) => {
       console.log(dimensions.width + " x " + dimensions.height);
       Swal.fire({
         title: "",
-        text: "Image dimensions error",
+        text: "minimum dimension is 512 x 512 px.maximum allowed dimension is 2048 x 2048 px.",
         icon: "error",
         confirmButtonText: "OK",
         color: "red",
@@ -342,7 +347,7 @@ const InteriorDesignForm = (props) => {
             }
           </div> */}
           <div className="selectOptionDiv">
-            <label htmlFor="">Interior Type</label>
+            <label htmlFor="">Interior Type *</label>
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
@@ -361,7 +366,7 @@ const InteriorDesignForm = (props) => {
               styles={customStyles}
               isSearchable={false}
             />
-            <label htmlFor="">Style</label>
+            <label htmlFor="">Style *</label>
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
@@ -371,7 +376,7 @@ const InteriorDesignForm = (props) => {
               isSearchable={false}
               onChange={(e) => setStyle(e.value)}
             />
-            <label htmlFor="">Color</label>
+            <label htmlFor="">Color *</label>
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
@@ -383,7 +388,7 @@ const InteriorDesignForm = (props) => {
               getOptionValue={(option) => option.value}
               onChange={(e) => setColor(e.value)}
             />
-            <label htmlFor="">Number Of Designs</label>
+            <label htmlFor="">Number Of Designs *</label>
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
@@ -428,6 +433,7 @@ const InteriorDesignForm = (props) => {
                 cols="30"
                 rows="5"
                 placeholder="e.g A clean looking living room with black and yellow textures and a coffee table made from hardwood."
+                onChange={(e) => setAddtionalPro(e.target.value)}
               ></textarea>
             </div>
           </div>

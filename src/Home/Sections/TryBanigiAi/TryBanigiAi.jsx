@@ -16,6 +16,7 @@ import InteriorDesignForm from "../../../Components/InteriorDesignForm";
 import ExteriorDesignForm from "../../../Components/ExteriorDesignForm";
 import LandscapeDesignForm from "../../../Components/LandscapeDesignForm";
 import CustomDesignForm from "../../../Components/CustomDesignForm";
+import { useEffect } from "react";
 
 const TryBanigiAi = (props) => {
   const [activeTab, setActiveTab] = useState(0);
@@ -93,7 +94,13 @@ const TryBanigiAi = (props) => {
           />
         </svg>
       ),
-      content: <ExteriorDesignForm />,
+      content: (
+        <ExteriorDesignForm
+          manageLoader={props.manageLoader}
+          selectImage={selectImage}
+          generatedImagesArr={generatedImagesArr}
+        />
+      ),
     },
     {
       title: "Landscape Design",
@@ -158,7 +165,13 @@ const TryBanigiAi = (props) => {
         </svg>
       ),
 
-      content: <LandscapeDesignForm />,
+      content: (
+        <LandscapeDesignForm
+          manageLoader={props.manageLoader}
+          selectImage={selectImage}
+          generatedImagesArr={generatedImagesArr}
+        />
+      ),
     },
     {
       title: "Custom Design",
@@ -185,12 +198,18 @@ const TryBanigiAi = (props) => {
         </svg>
       ),
 
-      content: <CustomDesignForm />,
+      content: (
+        <CustomDesignForm
+          manageLoader={props.manageLoader}
+          selectImage={selectImage}
+          generatedImagesArr={generatedImagesArr}
+        />
+      ),
     },
   ];
   const handleTabClick = (index) => {
+    setGeneratedImages([]);
     setActiveTab(index);
-    // setGeneratedImages([]);
   };
   const renderTabs = () => {
     return tabs.map((tab, index) => (
