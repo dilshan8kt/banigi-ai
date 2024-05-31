@@ -204,12 +204,12 @@ const LandscapeDesignForm = (props) => {
 
       if (image_url) {
         console.log("Running....");
-        let mask = await createMask(image_url);
+        let mask = await createMask(props, image_url);
         if (mask) {
           let job_id = mask.data.job_id;
           let stop = "";
           let run = setInterval(async () => {
-            let data = await getMask(job_id);
+            let data = await getMask(props, job_id);
             console.log(data.data.job_status);
             if (data.data.job_status == "done") {
               stop = data.data.job_status;
@@ -235,6 +235,7 @@ const LandscapeDesignForm = (props) => {
               }
 
               let genarate_img = await generateImage(
+                props,
                 "landscaping",
                 image_url,
                 maskUrl,
@@ -251,6 +252,7 @@ const LandscapeDesignForm = (props) => {
                   console.log("getting...");
                   let run_generate_imgs = setInterval(async () => {
                     let genarate_imgs = await getGeneratedImage(
+                      props,
                       genarate_img.data.job_id
                     );
                     console.log(genarate_imgs.data.job_status);

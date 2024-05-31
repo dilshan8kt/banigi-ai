@@ -8,7 +8,7 @@ const headers = {
   "api-key": API_KEY,
 };
 
-export const createMask = (url) => {
+export const createMask = (props, url) => {
   return axios
     .post(
       `${base_url}/v1/create_mask`,
@@ -19,17 +19,24 @@ export const createMask = (url) => {
       { headers }
     )
     .then((response) => response.data)
-    .catch((error) => errorMsg("Something went wrong with api..!"));
+    .catch((error) => {
+      props.manageLoader(false);
+      errorMsg("Something went wrong with api..!");
+    });
 };
 
-export const getMask = (job_id) => {
+export const getMask = (props, job_id) => {
   return axios
     .get(`${base_url}/v1/create_mask/${job_id}`, { headers })
     .then((response) => response.data)
-    .catch((error) => errorMsg("Something went wrong with api..!"));
+    .catch((error) => {
+      props.manageLoader(false);
+      errorMsg("Something went wrong with api..!");
+    });
 };
 
 export const generateImage = (
+  props,
   category,
   url,
   masksArr,
@@ -117,14 +124,20 @@ export const generateImage = (
   return axios
     .post(`${base_url}/v1/generate_image`, data, { headers })
     .then((response) => response.data)
-    .catch((error) => errorMsg("Something went wrong with api..!"));
+    .catch((error) => {
+      props.manageLoader(false);
+      errorMsg("Something went wrong with api..!");
+    });
 };
 
-export const getGeneratedImage = (job_id) => {
+export const getGeneratedImage = (props, job_id) => {
   return axios
     .get(`${base_url}/v1/generate_image/${job_id}`, { headers })
     .then((response) => response.data)
-    .catch((error) => errorMsg("Something went wrong with api..!"));
+    .catch((error) => {
+      props.manageLoader(false);
+      errorMsg("Something went wrong with api..!");
+    });
 };
 
 const errorMsg = (msg) => {
