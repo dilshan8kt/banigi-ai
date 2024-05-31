@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import PrimaryButton from "./PrimaryButton";
 import Swal from "sweetalert2";
 import { getImageSize } from "react-image-size";
@@ -17,13 +17,15 @@ const CustomDesignForm = (props) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedName, setSelectedName] = useState("");
   const [selectedFileDummy, setSelectedFileDummy] = useState("");
-  const [roomAddPto, setRoomAddPro] = useState("");
+  const [roomAddPro, setRoomAddPro] = useState("");
   const [avoidAddPro, setAvoidAddPro] = useState("");
 
   const [showRoomTypeExample, setShowRoomTypeExample] = useState(false);
   const [showAvoidThingsExample, setShowAvoidThingsExample] = useState(false);
   const [interiorSpaces, setInteriorSpaces] = useState([]);
   const [interiorThemes, setInteriorThemes] = useState([]);
+
+  const ref = useRef();
 
   useEffect(() => {
     getTypes();
@@ -136,7 +138,7 @@ const CustomDesignForm = (props) => {
   };
 
   const validateInputs = () => {
-    if (selectedName == "" || roomAddPto == "") {
+    if (selectedName == "" || roomAddPro == "") {
       props.manageLoader(false);
       Swal.fire({
         title: "",
@@ -153,6 +155,14 @@ const CustomDesignForm = (props) => {
     } else {
       return true;
     }
+  };
+
+  const getEx = (ex) => {
+    setRoomAddPro(ex);
+  };
+
+  const getAvoidEx = (ex) => {
+    setAvoidAddPro(ex);
   };
 
   const handleAi = async (e) => {
@@ -183,12 +193,12 @@ const CustomDesignForm = (props) => {
               clearInterval(run);
               console.log("image generating...");
               let addtions_pro = "";
-              if (roomAddPto) {
-                addtions_pro = roomAddPto;
+              if (roomAddPro) {
+                addtions_pro = roomAddPro;
               }
 
               if (addtions_pro && avoidAddPro) {
-                addtions_pro = roomAddPto + ". Avoid " + avoidAddPro;
+                addtions_pro = roomAddPro + ". Avoid " + avoidAddPro;
               }
               let genarate_img = await generateImage(
                 "custom",
@@ -271,6 +281,7 @@ const CustomDesignForm = (props) => {
           <div className="selectOptionDiv">
             <label htmlFor="">Room Type *</label>
             <textarea
+              value={roomAddPro}
               name=""
               id=""
               cols="30"
@@ -300,11 +311,25 @@ const CustomDesignForm = (props) => {
               </p>
               {showRoomTypeExample && (
                 <div className="roomTypeExamplePara">
-                  <p>
+                  <p
+                    style={{ cursor: "pointer" }}
+                    onClick={(e) =>
+                      getEx(
+                        "Beautiful classic bedroom with the colors of gold, purple and grey."
+                      )
+                    }
+                  >
                     Beautiful classic bedroom with the colors of gold, purple
                     and grey.
                   </p>
-                  <p>
+                  <p
+                    style={{ cursor: "pointer" }}
+                    onClick={(e) =>
+                      getEx(
+                        "Beautiful Scandinavian living room with colors of white and beige, modular furniture with cotton textiles."
+                      )
+                    }
+                  >
                     Beautiful Scandinavian living room with colors of white and
                     beige, modular furniture with cotton textiles.
                   </p>
@@ -313,6 +338,7 @@ const CustomDesignForm = (props) => {
             </div>
             <label htmlFor="">Avoid Things</label>
             <textarea
+            value={avoidAddPro}
               name=""
               id=""
               cols="30"
@@ -343,8 +369,18 @@ const CustomDesignForm = (props) => {
 
               {showAvoidThingsExample && (
                 <div className="roomTypeExamplePara">
-                  <p>Purple, carpet, window</p>
-                  <p>Wood , pink</p>
+                  <p
+                    style={{ cursor: "pointer" }}
+                    onClick={() => getAvoidEx("Purple, carpet, window")}
+                  >
+                    Purple, carpet, window
+                  </p>
+                  <p
+                    style={{ cursor: "pointer" }}
+                    onClick={() => getAvoidEx("Wood , pink")}
+                  >
+                    Wood , pink
+                  </p>
                 </div>
               )}
             </div>
