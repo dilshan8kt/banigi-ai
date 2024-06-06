@@ -26,7 +26,7 @@ const Home = () => {
           <div class="loading"></div>
         </div>
       ) : null}
-      <Header />
+      <Header manageLoader={manageLoader} />
       <BannerSection />
       {/* <HowItWorkSection/> */}
       <TryBanigiAi manageLoader={manageLoader} />

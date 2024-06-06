@@ -1,15 +1,28 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import dashboardLogo from "../../assets/logo.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { getAuth, signOut } from "firebase/auth";
 
 const Dashboard = () => {
   const [showLogout, setShowLogout] = useState(false);
+  const navigate = useNavigate();
 
   const openLogout = () => {
     setShowLogout(!showLogout);
-  }
+  };
+
+  const logout = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        navigate("/");
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
   return (
     <div className="dashboard_container">
@@ -42,7 +55,10 @@ const Dashboard = () => {
                   />
                 </svg>
 
-                <span> Interior <span>Design</span></span>
+                <span>
+                  {" "}
+                  Interior <span>Design</span>
+                </span>
               </NavLink>
             </li>
             <li>
@@ -90,7 +106,10 @@ const Dashboard = () => {
                     stroke-width="0.8037"
                   />
                 </svg>
-                <span> Exterior <span>Design</span></span>
+                <span>
+                  {" "}
+                  Exterior <span>Design</span>
+                </span>
               </NavLink>
             </li>
             <li>
@@ -170,7 +189,10 @@ const Dashboard = () => {
                     fill-opacity="0.6"
                   />
                 </svg>
-                <span> Landscape <span>Design</span></span>
+                <span>
+                  {" "}
+                  Landscape <span>Design</span>
+                </span>
               </NavLink>
             </li>
             <li>
@@ -204,7 +226,10 @@ const Dashboard = () => {
                     fill-opacity="0.6"
                   />
                 </svg>
-                <span> Custom <span>Design</span></span>
+                <span>
+                  {" "}
+                  Custom <span>Design</span>
+                </span>
               </NavLink>
             </li>
             <li>
@@ -255,7 +280,8 @@ const Dashboard = () => {
           <button>3 Credits Left</button>
 
           <NavLink to={"/dashboard/myPricing"}>
-            <button className="buyCreditBtn">Buy Credits</button></NavLink>
+            <button className="buyCreditBtn">Buy Credits</button>
+          </NavLink>
         </div>
       </aside>
       {/* --//aside-- */}
@@ -263,7 +289,7 @@ const Dashboard = () => {
       {/* --dashboard pages-- */}
       <main className="dashboardPages">
         <div className="myAccountDiv">
-          <button  onClick={openLogout}>
+          <button onClick={openLogout}>
             My Account
             <svg
               width="9"
@@ -282,11 +308,11 @@ const Dashboard = () => {
             </svg>
           </button>
 
-          {showLogout && <Link to="/"><div className="logout_btn">
-            Logout
-          </div> </Link> 
-          }
-
+          {showLogout && (
+            <div onClick={() => logout()} className="logout_btn">
+              Logout
+            </div>
+          )}
         </div>
 
         <Outlet />

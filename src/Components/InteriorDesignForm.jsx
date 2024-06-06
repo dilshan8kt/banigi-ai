@@ -30,8 +30,11 @@ import { getImageSize } from "react-image-size";
 import { storage } from "../firebase/firebase";
 import { getDownloadURL } from "firebase/storage";
 import { uploadImageToFireBase } from "../common/uplaodImages";
+import { saveGeneratedImage, saveMainUploadImage } from "../apis/usersApis";
+import checkAuth from "../auth/CheckAuth";
 
 const InteriorDesignForm = (props) => {
+  const { authData } = checkAuth();
   const [type, setType] = useState("");
   const [style, setStyle] = useState("");
   const [color, setColor] = useState("");
@@ -215,6 +218,7 @@ const InteriorDesignForm = (props) => {
         console.log("Running....");
         let mask = await createMask(props, image_url);
         if (mask) {
+          saveMainUploadImage(props, authData.uid, mask.data.job_id, image_url);
           let job_id = mask.data.job_id;
           let stop = "";
           let run = setInterval(async () => {
@@ -258,6 +262,12 @@ const InteriorDesignForm = (props) => {
                       // ]);
                       props.generatedImagesArr(
                         genarate_imgs.data.generated_images
+                      );
+                      saveGeneratedImage(
+                        props,
+                        authData.uid,
+                        mask.data.job_id,
+                        genarate_imgs.data.generated_images.toString()
                       );
                       props.manageLoader(false);
                       clearInterval(run_generate_imgs);

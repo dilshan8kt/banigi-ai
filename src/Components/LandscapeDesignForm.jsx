@@ -18,8 +18,11 @@ import { SUPABASE_BUCKET_PATH } from "../constants/config";
 import Swal from "sweetalert2";
 import { getImageSize } from "react-image-size";
 import { uploadImageToFireBase } from "../common/uplaodImages";
+import checkAuth from "../auth/CheckAuth";
+import { saveGeneratedImage, saveMainUploadImage } from "../apis/usersApis";
 
 const LandscapeDesignForm = (props) => {
+  const { authData } = checkAuth();
   const [type, setType] = useState("");
   const [style, setStyle] = useState("");
   const [color, setColor] = useState("");
@@ -207,6 +210,7 @@ const LandscapeDesignForm = (props) => {
         console.log("Running....");
         let mask = await createMask(props, image_url);
         if (mask) {
+          saveMainUploadImage(props, authData.uid, mask.data.job_id, image_url);
           let job_id = mask.data.job_id;
           let stop = "";
           let run = setInterval(async () => {
@@ -260,6 +264,12 @@ const LandscapeDesignForm = (props) => {
                     if (genarate_imgs.data.job_status == "done") {
                       props.generatedImagesArr(
                         genarate_imgs.data.generated_images
+                      );
+                      saveGeneratedImage(
+                        props,
+                        authData.uid,
+                        mask.data.job_id,
+                        genarate_imgs.data.generated_images.toString()
                       );
                       props.manageLoader(false);
                       clearInterval(run_generate_imgs);

@@ -2,6 +2,9 @@ import axios from "axios";
 import { API_BASE_URL, API_KEY } from "../constants/config";
 import Swal from "sweetalert2";
 
+// https://cdn.reimaginehome.ai/prod/gen/b5d55b57-9d9b-4b29-84f9-f8dba3ed12d6.png
+// https://cdn.reimaginehome.ai/prod/gen/b5d55b57-9d9b-4b29-84f9-f8dba3ed12d6.png
+
 const base_url = API_BASE_URL;
 const headers = {
   "content-type": "application/json",

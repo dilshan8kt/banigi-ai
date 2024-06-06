@@ -18,8 +18,11 @@ import {
   getMask,
 } from "../apis/Apis";
 import { uploadImageToFireBase } from "../common/uplaodImages";
+import { saveGeneratedImage, saveMainUploadImage } from "../apis/usersApis";
+import checkAuth from "../auth/CheckAuth";
 
 const ExteriorDesignForm = (props) => {
+  const { authData } = checkAuth();
   const [type, setType] = useState("");
   const [style, setStyle] = useState("");
   const [color, setColor] = useState("");
@@ -177,6 +180,7 @@ const ExteriorDesignForm = (props) => {
         console.log("Running....");
         let mask = await createMask(props, image_url);
         if (mask) {
+          saveMainUploadImage(props, authData.uid, mask.data.job_id, image_url);
           let job_id = mask.data.job_id;
           let stop = "";
           let run = setInterval(async () => {
@@ -216,6 +220,12 @@ const ExteriorDesignForm = (props) => {
                     if (genarate_imgs.data.job_status == "done") {
                       props.generatedImagesArr(
                         genarate_imgs.data.generated_images
+                      );
+                      saveGeneratedImage(
+                        props,
+                        authData.uid,
+                        mask.data.job_id,
+                        genarate_imgs.data.generated_images.toString()
                       );
                       props.manageLoader(false);
                       clearInterval(run_generate_imgs);
