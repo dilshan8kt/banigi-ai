@@ -17,6 +17,7 @@ import {
   getGeneratedImage,
   getMask,
 } from "../apis/Apis";
+import { uploadImageToFireBase } from "../common/uplaodImages";
 
 const ExteriorDesignForm = (props) => {
   const [type, setType] = useState("");
@@ -170,7 +171,7 @@ const ExteriorDesignForm = (props) => {
     let validate = validateInputs();
     if (validate) {
       let maskUrl = [];
-      let image_url = await uploadImageToSupabase();
+      let image_url = await uploadImageToFireBase(selectedName, selectedFile);
 
       if (image_url) {
         console.log("Running....");

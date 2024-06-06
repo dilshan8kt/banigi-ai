@@ -27,6 +27,9 @@ import { supabase } from "../supabase/supabaseClient";
 import { SUPABASE_BUCKET_PATH } from "../constants/config";
 import Swal from "sweetalert2";
 import { getImageSize } from "react-image-size";
+import { storage } from "../firebase/firebase";
+import { getDownloadURL } from "firebase/storage";
+import { uploadImageToFireBase } from "../common/uplaodImages";
 
 const InteriorDesignForm = (props) => {
   const [type, setType] = useState("");
@@ -41,6 +44,7 @@ const InteriorDesignForm = (props) => {
   const [interiorSpaces, setInteriorSpaces] = useState([]);
   const [interiorThemes, setInteriorThemes] = useState([]);
   const [generatedImages, setGeneratedImages] = useState([]);
+  const [imgUrl, setImgUrl] = useState("");
   const [patterns, setPatterns] = useState([]);
 
   useEffect(() => {
@@ -126,6 +130,22 @@ const InteriorDesignForm = (props) => {
     }
   };
 
+  // const uploadImageToFireBase = async () => {
+  //   console.log("uploading...");
+  //   let path = "";
+  //   const imageRef = await storage
+  //     .ref(`/images/${selectedName}`)
+  //     .put(selectedFile)
+  //     .then(async (e) => {
+  //       return await storage
+  //         .ref("images")
+  //         .child(selectedName)
+  //         .getDownloadURL()
+  //         .then((url) => url);
+  //     });
+  //   return imageRef;
+  // };
+
   const viewImages = (image) => {
     setSelectedFileDummy(image);
   };
@@ -189,7 +209,7 @@ const InteriorDesignForm = (props) => {
     let validate = validateInputs();
     if (validate) {
       let maskUrl = [];
-      let image_url = await uploadImageToSupabase();
+      let image_url = await uploadImageToFireBase(selectedName, selectedFile);
 
       if (image_url) {
         console.log("Running....");

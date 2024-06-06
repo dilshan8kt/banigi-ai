@@ -17,6 +17,7 @@ import { supabase } from "../supabase/supabaseClient";
 import { SUPABASE_BUCKET_PATH } from "../constants/config";
 import Swal from "sweetalert2";
 import { getImageSize } from "react-image-size";
+import { uploadImageToFireBase } from "../common/uplaodImages";
 
 const LandscapeDesignForm = (props) => {
   const [type, setType] = useState("");
@@ -200,7 +201,7 @@ const LandscapeDesignForm = (props) => {
     if (validate) {
       console.log(pathway + " & " + plant);
       let maskUrl = [];
-      let image_url = await uploadImageToSupabase();
+      let image_url = await uploadImageToFireBase(selectedName, selectedFile);
 
       if (image_url) {
         console.log("Running....");

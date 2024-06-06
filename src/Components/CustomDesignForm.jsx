@@ -12,6 +12,7 @@ import {
   getMask,
 } from "../apis/Apis";
 import { SUPABASE_BUCKET_PATH } from "../constants/config";
+import { uploadImageToFireBase } from "../common/uplaodImages";
 
 const CustomDesignForm = (props) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -171,7 +172,7 @@ const CustomDesignForm = (props) => {
     let validate = validateInputs();
     if (validate) {
       let maskUrl = [];
-      let image_url = await uploadImageToSupabase();
+      let image_url = await uploadImageToFireBase(selectedName, selectedFile);
 
       if (image_url) {
         console.log("Running....");
