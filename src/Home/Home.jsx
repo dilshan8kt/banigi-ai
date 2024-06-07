@@ -14,10 +14,16 @@ import BuildJob from "./Sections/buildJob/BuildJob";
 
 const Home = () => {
   const [loader, setLoader] = useState(false);
+  const [newOpen, setNewOpen] = useState(false);
 
   const manageLoader = (status) => {
     setLoader(status);
   };
+
+  const openLogin = (status) => {
+    setNewOpen(status);
+  };
+
 
   return (
     <div>
@@ -26,12 +32,12 @@ const Home = () => {
           <div class="loading"></div>
         </div>
       ) : null}
-      <Header manageLoader={manageLoader} />
+      <Header manageLoader={manageLoader} newOpen={newOpen} openLogin={openLogin}/>
       <BannerSection />
       {/* <HowItWorkSection/> */}
-      <TryBanigiAi manageLoader={manageLoader} />
+      <TryBanigiAi manageLoader={manageLoader} openLogin={openLogin} />
 
-      <DesignGrid />
+      <DesignGrid manageLoader={manageLoader} />
       <BuildJob />
       <Feedback />
       <DownloadApp />

@@ -19,7 +19,7 @@ const Header = (props) => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showMobileNav, setShowMobileNav] = useState(false);
-// console.log(authData.uid);
+  // console.log(authData.uid);
   const urlCheck = useLocation();
   const openLoginModal = () => {
     setShowSignupModal(false);
@@ -30,7 +30,8 @@ const Header = (props) => {
     setShowSignupModal(true);
   };
   const closeModal = () => {
-    console.log("close");
+    // console.log("close");
+    props.openLogin(false);
     setShowLoginModal(false);
     setShowSignupModal(false);
   };
@@ -119,6 +120,13 @@ const Header = (props) => {
               </button>
             )}
             {showLoginModal && (
+              <LoginModal
+                closeModal={closeModal}
+                openSignupModal={openSignupModal}
+                manageLoader={props.manageLoader}
+              />
+            )}
+            {props.newOpen && (
               <LoginModal
                 closeModal={closeModal}
                 openSignupModal={openSignupModal}

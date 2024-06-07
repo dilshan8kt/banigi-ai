@@ -53,6 +53,7 @@ const TryBanigiAi = (props) => {
           manageLoader={props.manageLoader}
           selectImage={selectImage}
           generatedImagesArr={generatedImagesArr}
+          openLogin={props.openLogin}
         />
       ),
     },
@@ -99,6 +100,7 @@ const TryBanigiAi = (props) => {
           manageLoader={props.manageLoader}
           selectImage={selectImage}
           generatedImagesArr={generatedImagesArr}
+          openLogin={props.openLogin}
         />
       ),
     },
@@ -170,6 +172,7 @@ const TryBanigiAi = (props) => {
           manageLoader={props.manageLoader}
           selectImage={selectImage}
           generatedImagesArr={generatedImagesArr}
+          openLogin={props.openLogin}
         />
       ),
     },
@@ -203,6 +206,7 @@ const TryBanigiAi = (props) => {
           manageLoader={props.manageLoader}
           selectImage={selectImage}
           generatedImagesArr={generatedImagesArr}
+          openLogin={props.openLogin}
         />
       ),
     },

@@ -170,6 +170,12 @@ const ExteriorDesignForm = (props) => {
 
   const handleAi = async (e) => {
     e.preventDefault();
+
+    if(!authData.uid){
+      props.openLogin(true)
+      return 0;
+    }
+    
     props.manageLoader(true);
     let validate = validateInputs();
     if (validate) {

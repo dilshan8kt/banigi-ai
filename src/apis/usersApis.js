@@ -44,3 +44,47 @@ export const saveGeneratedImage = (props, uid, jobId, urls) => {
       errorMsg("Something went wrong with api..!");
     });
 };
+
+export const getMainImage = (props, uid) => {
+  return axios
+    .get(`${base_url}/api/images/uploaded/${uid}`, { headers })
+    .then((response) => response.data)
+    .catch((error) => {
+      props.manageLoader(false);
+      errorMsg("Something went wrong with api..!");
+    });
+};
+
+export const getGeneratedImages = (props, uid) => {
+  return axios
+    .get(`${base_url}/api/images/generated/${uid}`, { headers })
+    .then((response) => response.data)
+    .catch((error) => {
+      props.manageLoader(false);
+      errorMsg("Something went wrong with api..!");
+    });
+};
+
+export const getJobUid = (props, uid, jobId) => {
+  return axios
+    .get(`${base_url}/api/images/jobUser?uid=${uid}&jobId=${jobId}`, {
+      headers,
+    })
+    .then((response) => response.data)
+    .catch((error) => {
+      props.manageLoader(false);
+      errorMsg("Something went wrong with api..!");
+    });
+};
+
+export const getAllImages = (props, uid) => {
+  return axios
+    .get(`${base_url}/api/images/all/${uid}`, {
+      headers,
+    })
+    .then((response) => response.data)
+    .catch((error) => {
+      props.manageLoader(false);
+      errorMsg("Something went wrong with api..!");
+    });
+};
