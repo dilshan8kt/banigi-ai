@@ -22,7 +22,7 @@ const DesignGrid = (props) => {
 
   const getGenImages = async () => {
     props.manageLoader(true);
-    let data = await getAllImages(props, authData.uid);
+    let data = await getAllImages(props);
     // console.log(data.images);
     if (data) setDesignImages(data.images), props.manageLoader(false);
   };

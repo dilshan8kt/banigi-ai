@@ -77,9 +77,9 @@ export const getJobUid = (props, uid, jobId) => {
     });
 };
 
-export const getAllImages = (props, uid) => {
+export const getAllImages = (props) => {
   return axios
-    .get(`${base_url}/api/images/all/${uid}`, {
+    .get(`${base_url}/api/images/all/`, {
       headers,
     })
     .then((response) => response.data)
