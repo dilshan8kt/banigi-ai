@@ -7,6 +7,7 @@ import {
   NavLink,
   Outlet,
   useLocation,
+  useNavigate,
   useSearchParams,
 } from "react-router-dom";
 import Scrollspy from "react-scrollspy";
@@ -19,6 +20,7 @@ const Header = (props) => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showMobileNav, setShowMobileNav] = useState(false);
+  const navigate = useNavigate();
   // console.log(authData.uid);
   const urlCheck = useLocation();
   const openLoginModal = () => {
@@ -34,6 +36,19 @@ const Header = (props) => {
     props.openLogin(false);
     setShowLoginModal(false);
     setShowSignupModal(false);
+  };
+
+  const logout = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        location.reload();
+        // navigate("/");
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
   };
 
   return (
@@ -133,7 +148,7 @@ const Header = (props) => {
                 manageLoader={props.manageLoader}
               />
             )}
-            <button className="getStarted_btn" onClick={openSignupModal}>
+            <button className="getStarted_btn" onClick={logout}>
               Get Started
             </button>
             {showSignupModal && (
