@@ -37,6 +37,9 @@ const ExteriorDesignForm = (props) => {
   const [generatedImages, setGeneratedImages] = useState([]);
   const [patterns, setPatterns] = useState([]);
 
+  const [typeLabel, setTypeLabel] = useState("");
+  const [styleLabel, setStyleLabel] = useState("");
+
   useEffect(() => {
     getTypes();
     getStyles();
@@ -171,11 +174,11 @@ const ExteriorDesignForm = (props) => {
   const handleAi = async (e) => {
     e.preventDefault();
 
-    if(!authData.uid){
-      props.openLogin(true)
+    if (!authData.uid) {
+      props.openLogin(true);
       return 0;
     }
-    
+
     props.manageLoader(true);
     let validate = validateInputs();
     if (validate) {
@@ -231,7 +234,17 @@ const ExteriorDesignForm = (props) => {
                         props,
                         authData.uid,
                         mask.data.job_id,
-                        genarate_imgs.data.generated_images.toString()
+                        genarate_imgs.data.generated_images.toString(),
+                        typeLabel,
+                        "exterior",
+                        "",
+                        styleLabel,
+                        color,
+                        noOfdeisign.toString(),
+                        "",
+                        "",
+                        "",
+                        addtionalPro
                       );
                       props.manageLoader(false);
                       clearInterval(run_generate_imgs);
@@ -324,7 +337,10 @@ const ExteriorDesignForm = (props) => {
               options={exteriorSpaces}
               styles={customStyles}
               isSearchable={false}
-              onChange={(e) => setType(e.value)}
+              onChange={(e) => {
+                setTypeLabel(e.label);
+                setType(e.value);
+              }}
             />
             <label htmlFor="">Mode</label>
             <Select
@@ -343,7 +359,10 @@ const ExteriorDesignForm = (props) => {
               options={exteriorThemes}
               styles={customStyles}
               isSearchable={false}
-              onChange={(e) => setStyle(e.value)}
+              onChange={(e) => {
+                setStyleLabel(e.label);
+                setStyle(e.value);
+              }}
             />
 
             <label htmlFor="">Number Of Designs *</label>

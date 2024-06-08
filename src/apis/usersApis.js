@@ -27,7 +27,22 @@ export const saveMainUploadImage = (props, uid, jobId, url) => {
     });
 };
 
-export const saveGeneratedImage = (props, uid, jobId, urls) => {
+export const saveGeneratedImage = (
+  props,
+  uid,
+  jobId,
+  urls,
+  category = "",
+  type = "",
+  model = "",
+  style = "",
+  color = "",
+  number_of_designs = 1,
+  ai_invention = "",
+  pathway = "",
+  plants = "",
+  additional_prompt = ""
+) => {
   return axios
     .post(
       `${base_url}/api/images/generated`,
@@ -35,6 +50,16 @@ export const saveGeneratedImage = (props, uid, jobId, urls) => {
         uid: uid,
         jobId: jobId,
         imageUrl: urls,
+        category: category,
+        type: type,
+        model: model,
+        style: style,
+        color: color,
+        number_of_designs: number_of_designs,
+        ai_invention: ai_invention,
+        pathway: pathway,
+        plants: plants,
+        additional_prompt: additional_prompt,
       },
       { headers }
     )

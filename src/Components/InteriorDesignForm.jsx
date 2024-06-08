@@ -50,6 +50,9 @@ const InteriorDesignForm = (props) => {
   const [imgUrl, setImgUrl] = useState("");
   const [patterns, setPatterns] = useState([]);
 
+  const [typeLabel, setTypeLabel] = useState("");
+  const [styleLabel, setStyleLabel] = useState("");
+
   useEffect(() => {
     getTypes();
     getStyles();
@@ -209,11 +212,11 @@ const InteriorDesignForm = (props) => {
   const handleAi = async (e) => {
     e.preventDefault();
 
-    if(!authData.uid){
-      props.openLogin(true)
+    if (!authData.uid) {
+      props.openLogin(true);
       return 0;
     }
-    
+
     props.manageLoader(true);
     let validate = validateInputs();
     if (validate) {
@@ -273,7 +276,17 @@ const InteriorDesignForm = (props) => {
                         props,
                         authData.uid,
                         mask.data.job_id,
-                        genarate_imgs.data.generated_images.toString()
+                        genarate_imgs.data.generated_images.toString(),
+                        typeLabel,
+                        "interior",
+                        "",
+                        styleLabel,
+                        color,
+                        noOfdeisign.toString(),
+                        "",
+                        "",
+                        "",
+                        addtionalPro
                       );
                       props.manageLoader(false);
                       clearInterval(run_generate_imgs);
@@ -393,7 +406,10 @@ const InteriorDesignForm = (props) => {
               options={interiorSpaces}
               styles={customStyles}
               isSearchable={false}
-              onChange={(e) => setType(e.value)}
+              onChange={(e) => {
+                setTypeLabel(e.label);
+                setType(e.value);
+              }}
             />
             <label htmlFor="">Mode</label>
             <Select
@@ -412,7 +428,10 @@ const InteriorDesignForm = (props) => {
               options={interiorThemes}
               styles={customStyles}
               isSearchable={false}
-              onChange={(e) => setStyle(e.value)}
+              onChange={(e) => {
+                setStyleLabel(e.label);
+                setStyle(e.value);
+              }}
             />
             <label htmlFor="">Color *</label>
             <Select

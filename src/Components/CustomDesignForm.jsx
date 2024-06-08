@@ -244,7 +244,17 @@ const CustomDesignForm = (props) => {
                         props,
                         authData.uid,
                         mask.data.job_id,
-                        genarate_imgs.data.generated_images.toString()
+                        genarate_imgs.data.generated_images.toString(),
+                        "custom",
+                        "custom",
+                        "",
+                        "",
+                        "",
+                        1,
+                        "",
+                        "",
+                        "",
+                        addtions_pro
                       );
                       props.manageLoader(false);
                       clearInterval(run_generate_imgs);
