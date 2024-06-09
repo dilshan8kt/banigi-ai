@@ -1,19 +1,24 @@
-import React from 'react';
-import finalDesign from "../../assets/FinalDesign.png";
+import React, { useEffect, useState } from "react";
+import ImageCard from "./components/ImageCard";
 
-const AllDesignDash = () => {
+const AllDesignDash = (props) => {
+  const [imageData, setImageData] = useState([]);
+  useEffect(() => {
+    filterArr();
+  }, []);
+
+  const filterArr = async () => {
+    props.setLoader(true);
+    let data = await props.dataLoad();
+    setImageData(data);
+    props.setLoader(false);
+  };
+
   return (
     <>
-
-      <div className="AllDesignDash">
-       <img src={finalDesign} alt="" />
-        <img src={finalDesign} alt="" />
-        <img src={finalDesign} alt="" />
-      
-      </div>
-    
+      <ImageCard imageData={imageData} />
     </>
-  )
-}
+  );
+};
 
-export default AllDesignDash
+export default AllDesignDash;

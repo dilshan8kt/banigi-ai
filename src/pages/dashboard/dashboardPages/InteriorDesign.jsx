@@ -12,7 +12,7 @@ import relaxed from "../../../assets/relaxed.png"
 import warmEarth from "../../../assets/warmEarth.png"
 import customStyles from '../../../Components/selectCustomStyle';
 
-const InteriorDesign = () => {
+const InteriorDesign = (props) => {
 
   const [file, setFile] = useState("");
   function getFile(event) {
@@ -68,6 +68,9 @@ const InteriorDesign = () => {
   );
   return (
     <>
+    {/* <div class="loading-state">
+        <div class="loading"></div>
+      </div> */}
       <div className="dash_InteriorDesign">
         <h3>Interior Design</h3>
 

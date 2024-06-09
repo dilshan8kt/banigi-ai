@@ -8,6 +8,7 @@ const checkAuth = () => {
     getAuth().onAuthStateChanged(function (user) {
       if (user) {
         setAuthData(user);
+        localStorage.setItem("uid", user.uid);
         // User is signed in.
       } else {
         // No user is signed in.

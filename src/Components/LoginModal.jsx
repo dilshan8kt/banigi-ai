@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import loginImg from "../assets/loginImg.png";
 import loginLogo from "../assets/logo.png";
@@ -27,6 +27,7 @@ const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
   const [password, setPassword] = useState("");
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeClose);
+  const navigate = useNavigate();
 
   const handleToggle = () => {
     if (type === "password") {
@@ -46,6 +47,7 @@ const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
         // The signed-in user info.
         const user = result.user;
         closeModal();
+        navigate("/dashboard/interiorDesign")
       })
       .catch((error) => {});
   };
@@ -58,6 +60,7 @@ const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
         // The signed-in user info.
         const user = result.user;
         closeModal();
+        navigate("/dashboard/interiorDesign")
       })
       .catch((error) => {});
   };
@@ -70,6 +73,7 @@ const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
         // The signed-in user info.
         const user = result.user;
         closeModal();
+        navigate("/dashboard/interiorDesign")
       })
       .catch((error) => {});
   };
@@ -83,6 +87,7 @@ const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
         const user = userCredential.user;
         closeModal();
         manageLoader(false);
+        navigate("/dashboard/interiorDesign")
       })
       .catch((error) => {
         const errorCode = error.code;

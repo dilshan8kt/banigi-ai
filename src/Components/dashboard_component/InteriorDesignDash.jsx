@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import download from "../../assets/download.png";
+import ImageCard from "./components/ImageCard";
 
-const InteriorDesignDash = () => {
+const InteriorDesignDash = (props) => {
+  const [imageData, setImageData] = useState([]);
+  useEffect(() => {
+    filterArr();
+  }, []);
+
+  const filterArr = async () => {
+    props.setLoader(true);
+    let data = await props.dataLoad();
+    let dataN = data.filter((val) => val.type.includes("interior"));
+    setImageData(dataN);
+    props.setLoader(false);
+  };
+
   return (
-    <div>
-      Interior Design
-    </div>
-  )
-}
+    <>
+      <ImageCard imageData={imageData} />
+    </>
+  );
+};
 
-export default InteriorDesignDash
+export default InteriorDesignDash;

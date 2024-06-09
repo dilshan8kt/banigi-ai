@@ -2044,10 +2044,13 @@ button {
   gap: 11px;
 }
 .AllDesignDash img {
-  width: 360.6px;
-  height: 270.45px;
+  /* width: 360.6px;
+  height: 270.45px; */
+  width: 310.6px;
+  height: 201.45px;
   max-width: -moz-fit-content;
-  max-width: fit-content;
+  /* max-width: fit-content; */
+  border-radius: 5px;
 }
 
 .feature_box {
@@ -3802,4 +3805,15 @@ a:active {
   to {
     transform: rotate(360deg);
   }
+}
+
+.card {
+  background: #43484b;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
 }

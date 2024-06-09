@@ -16,6 +16,7 @@ const Dashboard = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
+        localStorage.removeItem("uid");
         navigate("/");
         // Sign-out successful.
       })
@@ -26,9 +27,6 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard_container">
-      {/* <div class="loading-state">
-        <div class="loading"></div>
-      </div> */}
       {/* --aside-- */}
       <aside className="sidebar_section">
         <div className="dashboardLogo">

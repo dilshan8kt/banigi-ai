@@ -113,3 +113,15 @@ export const getAllImages = (props) => {
       errorMsg("Something went wrong with api..!");
     });
 };
+
+export const getAllImagesByUid = (uid) => {
+  return axios
+    .get(`${base_url}/api/images/all/byUser/${uid}`, {
+      headers,
+    })
+    .then((response) => response.data)
+    .catch((error) => {
+      // props.manageLoader(false);
+      errorMsg("Something went wrong with api..!");
+    });
+};
