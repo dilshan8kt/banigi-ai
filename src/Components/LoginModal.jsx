@@ -21,6 +21,7 @@ import {
   signInWithRedirect,
   signOut,
 } from "firebase/auth";
+import { errorMsg } from "../common/alert";
 
 const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
   const [email, setEmail] = useState("");
@@ -47,7 +48,7 @@ const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
         // The signed-in user info.
         const user = result.user;
         closeModal();
-        navigate("/dashboard/interiorDesign")
+        navigate("/dashboard/interiorDesign");
       })
       .catch((error) => {});
   };
@@ -60,7 +61,7 @@ const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
         // The signed-in user info.
         const user = result.user;
         closeModal();
-        navigate("/dashboard/interiorDesign")
+        navigate("/dashboard/interiorDesign");
       })
       .catch((error) => {});
   };
@@ -73,7 +74,7 @@ const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
         // The signed-in user info.
         const user = result.user;
         closeModal();
-        navigate("/dashboard/interiorDesign")
+        navigate("/dashboard/interiorDesign");
       })
       .catch((error) => {});
   };
@@ -81,18 +82,25 @@ const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
   const loginUser = (e) => {
     e.preventDefault();
     manageLoader(true);
+
+    if (!email || !password) {
+      errorMsg("Check User credentials..");
+      manageLoader(false);
+      return 0;
+    }
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         closeModal();
         manageLoader(false);
-        navigate("/dashboard/interiorDesign")
+        navigate("/dashboard/interiorDesign");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
+        errorMsg("Invalid Login credentials")
         manageLoader(false);
       });
   };

@@ -2725,6 +2725,12 @@ a:active {
   color: white;
   padding: 60px 70px;
 }
+
+.DesignGridDiv {
+  background-color: #343a45;
+  color: white;
+  padding: 60px 70px;
+}
 @media (max-width: 992px) {
   .DesignGridDiv {
     padding: 40px 28px;

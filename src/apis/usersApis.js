@@ -114,14 +114,14 @@ export const getAllImages = (props) => {
     });
 };
 
-export const getAllImagesByUid = (uid) => {
+export const getAllImagesByUid = (setLoader, uid) => {
   return axios
     .get(`${base_url}/api/images/all/byUser/${uid}`, {
       headers,
     })
     .then((response) => response.data)
     .catch((error) => {
-      // props.manageLoader(false);
+      setLoader(false);
       errorMsg("Something went wrong with api..!");
     });
 };

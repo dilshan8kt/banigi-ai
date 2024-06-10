@@ -11,7 +11,7 @@ const CustomDesignDash = (props) => {
   const filterArr = async () => {
     props.setLoader(true);
     let data = await props.dataLoad();
-    let dataN = data.filter((val) => val.type.includes("custom"));
+    let dataN = data.filter((val) => val.type == "custom");
     setImageData(dataN);
     props.setLoader(false);
   };

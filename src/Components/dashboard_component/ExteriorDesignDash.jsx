@@ -11,8 +11,12 @@ const ExteriorDesignDash = (props) => {
   const filterArr = async () => {
     props.setLoader(true);
     let data = await props.dataLoad();
-    let dataN = data.filter((val) => val.type.includes("exterior"));
-    setImageData(dataN);
+    if (data) {
+      let dataN = data.filter((val) => val.type == "exterior");
+      console.log(dataN);
+      setImageData(dataN);
+    }
+
     props.setLoader(false);
   };
 

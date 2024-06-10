@@ -1,13 +1,263 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PrimaryButton from "../../../Components/PrimaryButton";
 import customStyles from "../../../Components/selectCustomStyle";
 import Select from "react-select";
+import { checkImageSize } from "../../../common/checkImageSize";
+import {
+  getLanscapingPreferenceList,
+  getSpaceTypes,
+  getThemeList,
+} from "../../../apis/OptionsApis";
+import Swal from "sweetalert2";
+import {
+  saveGeneratedImage,
+  saveMainUploadImage,
+} from "../../../apis/usersApis";
+import {
+  createMask,
+  generateImage,
+  getGeneratedImage,
+  getMask,
+} from "../../../apis/Apis";
+import { uploadImageToFireBase } from "../../../common/uplaodImages";
+import GeneratedImagesViwer from "./components/GeneratedImagesViwer";
+import checkAuth from "../../../auth/CheckAuth";
 
-const LandscapeDesign = () => {
+const LandscapeDesign = (props) => {
+  const { authData } = checkAuth();
+  const [type, setType] = useState("");
+  const [style, setStyle] = useState("");
+  const [color, setColor] = useState("");
+  const [addtionalPro, setAddtionalPro] = useState("");
+  const [noOfdeisign, setNoOfDesign] = useState(1);
+  const [pathway, setPathway] = useState("");
+  const [plant, setPlant] = useState("");
+
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedName, setSelectedName] = useState("");
+  const [selectedFileDummy, setSelectedFileDummy] = useState("");
+  const [exteriorSpaces, setExteriorSpaces] = useState([]);
+  const [exteriorThemes, setExteriorThemes] = useState([]);
+  const [pathways, setPathways] = useState([]);
+  const [plants, setPlants] = useState([]);
+  const [generatedImages, setGeneratedImages] = useState([]);
+  const [patterns, setPatterns] = useState([]);
+
+  const [typeLabel, setTypeLabel] = useState("");
+  const [styleLabel, setStyleLabel] = useState("");
+
   const [file, setFile] = useState("");
-  function getFile(event) {
-    setFile(URL.createObjectURL(event.target.files[0]));
+  const [loader, setLoader] = useState(false);
+
+  useEffect(() => {
+    getTypes();
+    getStyles();
+    getLanscapingPreferences();
+  }, []);
+
+  async function getFile(event) {
+    setLoader(true);
+    const file = event.target.files[0];
+    let check = await checkImageSize(URL.createObjectURL(file));
+    if (check) {
+      setSelectedFileDummy(URL.createObjectURL(file));
+      setSelectedFile(file);
+      setSelectedName(file.name);
+      setFile(URL.createObjectURL(event.target.files[0]));
+    }
+    setLoader(false);
   }
+
+  const getTypes = async () => {
+    setLoader(true);
+    let spaces = [];
+    const types = await getSpaceTypes();
+    if (types) {
+      let exterior_spaces = types.data["exterior_spaces"];
+      exterior_spaces.forEach((e) => {
+        let arr = removeChar(e);
+        spaces.push({ value: arr[0], label: arr[1] });
+      });
+      setExteriorSpaces(spaces);
+    }
+  };
+
+  const getStyles = async () => {
+    let themes = [];
+    const styles = await getThemeList();
+    if (styles) {
+      let exterior_themes = styles.data["exterior_themes"];
+      exterior_themes.forEach((e) => {
+        let arr = removeChar(e);
+        themes.push({ value: arr[0], label: arr[1] });
+      });
+      setExteriorThemes(themes);
+    }
+  };
+
+  const getLanscapingPreferences = async () => {
+    let landscapePaths = [];
+    let landscapePlants = [];
+    const landscape = await getLanscapingPreferenceList();
+    if (landscape) {
+      let pathways = landscape.data["pathways"];
+      let plants = landscape.data["plants"];
+      pathways.forEach((e) => {
+        landscapePaths.push({ value: e, label: e });
+      });
+      plants.forEach((e) => {
+        landscapePlants.push({ value: e, label: e });
+      });
+      setPathways(landscapePaths);
+      setPlants(landscapePlants);
+    }
+    setLoader(false);
+  };
+
+  const removeChar = (e) => {
+    let str = JSON.stringify(e);
+    let remove1 = str.replace(/{/g, "");
+    let remove2 = remove1.replace(/}/g, "");
+    let remove3 = remove2.replace(/"/g, "");
+    var arr = remove3.split(":");
+
+    return arr;
+  };
+
+  const validateInputs = () => {
+    if (
+      selectedName == "" ||
+      type == "" ||
+      style == "" ||
+      pathway == "" ||
+      plant == ""
+    ) {
+      setLoader(false);
+      Swal.fire({
+        title: "",
+        text: "Check all the required inputs",
+        icon: "warning",
+        confirmButtonText: "OK",
+        color: "red",
+        width: "20rem",
+        heightAuto: true,
+        confirmButtonColor: "red",
+        background: "antiquewhite",
+      });
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  const handleAi = async (e) => {
+    e.preventDefault();
+
+    // if (!authData.uid) {
+    //   props.openLogin(true);
+    //   return 0;
+    // }
+
+    setLoader(true);
+    let validate = validateInputs();
+    if (validate) {
+      console.log(pathway + " & " + plant);
+      let maskUrl = [];
+      let image_url = await uploadImageToFireBase(selectedName, selectedFile);
+
+      if (image_url) {
+        console.log("Running....");
+        let mask = await createMask(props, image_url);
+        if (mask) {
+          saveMainUploadImage(props, authData.uid, mask.data.job_id, image_url);
+          let job_id = mask.data.job_id;
+          let stop = "";
+          let run = setInterval(async () => {
+            let data = await getMask(props, job_id);
+            console.log(data.data.job_status);
+            if (data.data.job_status == "done") {
+              stop = data.data.job_status;
+              if (data.data.masks) {
+                // console.log(data.data.masks);
+                data.data.masks.forEach((e) => {
+                  maskUrl.push(e.url);
+                });
+              }
+              clearInterval(run);
+              console.log("image generating...");
+              let landscape = "";
+              if (pathway && plant) {
+                landscape = pathway + " & " + plant;
+              }
+
+              if (pathway) {
+                landscape = pathway;
+              }
+
+              if (plant) {
+                landscape = plant;
+              }
+
+              let genarate_img = await generateImage(
+                props,
+                "landscaping",
+                image_url,
+                maskUrl,
+                type,
+                style,
+                color,
+                noOfdeisign,
+                landscape,
+                addtionalPro
+              );
+              console.log("image generated");
+              if (genarate_img) {
+                if (genarate_img.data.job_id) {
+                  console.log("getting...");
+                  let run_generate_imgs = setInterval(async () => {
+                    let genarate_imgs = await getGeneratedImage(
+                      props,
+                      genarate_img.data.job_id
+                    );
+                    console.log(genarate_imgs.data.job_status);
+                    if (genarate_imgs.data.job_status == "done") {
+                      // props.generatedImagesArr(
+                      //   genarate_imgs.data.generated_images
+                      // );
+
+                      setGeneratedImages([
+                        ...genarate_imgs.data.generated_images,
+                      ]);
+
+                      saveGeneratedImage(
+                        props,
+                        authData.uid,
+                        mask.data.job_id,
+                        genarate_imgs.data.generated_images.toString(),
+                        typeLabel,
+                        "landscape",
+                        "",
+                        styleLabel,
+                        color,
+                        noOfdeisign.toString(),
+                        "",
+                        pathway,
+                        plant,
+                        addtionalPro
+                      );
+                      setLoader(false);
+                      clearInterval(run_generate_imgs);
+                    }
+                  }, 2000);
+                }
+              }
+            }
+          }, 2000);
+        }
+      }
+    }
+  };
+
   const landscapeOptions = [
     { value: "Modern", label: "Modern" },
     { value: "City", label: "City" },
@@ -50,27 +300,60 @@ const LandscapeDesign = () => {
     { value: "1", label: "1" },
     { value: "2", label: "2" },
     { value: "3", label: "3" },
-    { value: "4", label: "4" },
-    { value: "5", label: "5" },
   ];
   return (
     <>
+      {loader ? (
+        <div class="loading-state">
+          <div class="loading"></div>
+        </div>
+      ) : null}
       <div className="dash_ExteriorDesign">
         <h3>Landscape Design</h3>
 
         <div className="dash_ExteriorDesignForm">
           <div className="dash_ExteriorDesignFirst">
             <div>
-              <label htmlFor="">Landscape Type</label>
+              <label htmlFor="">Landscape Type *</label>
               <Select
                 className="react-select-container"
                 classNamePrefix="react-select"
-                defaultValue={landscapeOptions[0]}
-                options={landscapeOptions}
+                defaultValue={exteriorSpaces[0]}
+                options={exteriorSpaces}
                 styles={customStyles}
                 isSearchable={false}
+                onChange={(e) => {
+                  setTypeLabel(e.label);
+                  setType(e.value);
+                }}
               />
             </div>
+            <div>
+              <label htmlFor="">Pathways *</label>
+              <Select
+                className="react-select-container"
+                classNamePrefix="react-select"
+                defaultValue={pathways[0]}
+                options={pathways}
+                styles={customStyles}
+                isSearchable={false}
+                onChange={(e) => setPathway(e.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="">Plants *</label>
+              <Select
+                className="react-select-container"
+                classNamePrefix="react-select"
+                defaultValue={plants[0]}
+                options={plants}
+                styles={customStyles}
+                isSearchable={false}
+                onChange={(e) => setPlant(e.value)}
+              />
+            </div>
+          </div>
+          <div className="dash_ExteriorDesignFirst">
             <div>
               <label htmlFor="">Mode</label>
               <Select
@@ -83,20 +366,22 @@ const LandscapeDesign = () => {
               />
             </div>
             <div>
-              <label htmlFor="">Style</label>
+              <label htmlFor="">Style *</label>
               <Select
                 className="react-select-container"
                 classNamePrefix="react-select"
-                defaultValue={styleOptions[0]}
-                options={styleOptions}
+                defaultValue={exteriorThemes[0]}
+                options={exteriorThemes}
                 styles={customStyles}
                 isSearchable={false}
+                onChange={(e) => {
+                  setStyleLabel(e.label);
+                  setStyle(e.value);
+                }}
               />
             </div>
-          </div>
-          <div className="dash_ExteriorDesignSecond">
             <div>
-              <label htmlFor="">Number Of Designs</label>
+              <label htmlFor="">Number Of Designs *</label>
               <Select
                 className="react-select-container"
                 classNamePrefix="react-select"
@@ -104,8 +389,11 @@ const LandscapeDesign = () => {
                 options={NumberOfDesignOptions}
                 styles={customStyles}
                 isSearchable={false}
+                onChange={(e) => setNoOfDesign(parseInt(e.value))}
               />
             </div>
+          </div>
+          <div className="dash_ExteriorDesignSecond">
             <div>
               <label htmlFor="">AI Intervention</label>
               <div className="intervation_radio">
@@ -142,8 +430,10 @@ const LandscapeDesign = () => {
                 cols="30"
                 rows="5"
                 placeholder="e.g A clean looking living room with black and yellow textures and a coffee table made from hardwood."
+                onChange={(e) => setAddtionalPro(e.target.value)}
               ></textarea>
             </div>
+            <div></div>
           </div>
 
           <div className="ExteriorDesignFileDiv">
@@ -182,8 +472,9 @@ const LandscapeDesign = () => {
           </div>
 
           <div className="ExteriorDesignBtn">
-            <PrimaryButton text="Generate Image" />
+            <PrimaryButton text="Generate Image" onClick={(e) => handleAi(e)} />
           </div>
+          <GeneratedImagesViwer file={file} generatedImages={generatedImages} />
         </div>
       </div>
     </>

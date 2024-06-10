@@ -15,11 +15,11 @@ const MyDesign = () => {
   const [loader, setLoader] = useState(false);
 
   useEffect(() => {
-    loadData();
+    // loadData();
   }, []);
 
   const loadData = async () => {
-    let data = await getAllImagesByUid(localStorage.getItem("uid"));
+    let data = await getAllImagesByUid(setLoader, localStorage.getItem("uid"));
     // console.log(data.images);
     return data.images;
   };

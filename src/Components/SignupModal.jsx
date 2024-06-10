@@ -11,6 +11,7 @@ import modalClose from "../assets/modalClose.png";
 import eyeOpen from "../assets/eyeOpen.png";
 import eyeClose from "../assets/eyeClose.png";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { errorMsg } from "../common/alert";
 
 const SignupModal = ({ closeModal, openLoginModal, manageLoader }) => {
   const navigate = useNavigate();
@@ -57,11 +58,14 @@ const SignupModal = ({ closeModal, openLoginModal, manageLoader }) => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorMessage);
+          console.log(errorCode);
+          errorMsg(errorCode);
           manageLoader(false);
         });
     } else {
       console.log("password not match");
+      manageLoader(false);
+      errorMsg("password not match");
     }
   };
 

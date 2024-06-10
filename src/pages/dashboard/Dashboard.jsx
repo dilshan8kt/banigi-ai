@@ -30,7 +30,9 @@ const Dashboard = () => {
       {/* --aside-- */}
       <aside className="sidebar_section">
         <div className="dashboardLogo">
-          <img src={dashboardLogo} alt="" />
+          <a href="/">
+            <img src={dashboardLogo} alt="" />
+          </a>
         </div>
 
         <div className="dashboard_links">
