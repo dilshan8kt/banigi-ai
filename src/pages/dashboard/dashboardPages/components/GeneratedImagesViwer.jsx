@@ -35,7 +35,7 @@ const GeneratedImagesViwer = (props) => {
                         <img
                           style={{
                             width: "20%",
-                            height: "32%",
+                            height: "auto",
                             margin: "10px",
                             cursor: "pointer",
                           }}
@@ -47,7 +47,7 @@ const GeneratedImagesViwer = (props) => {
                     <img
                       style={{
                         width: "20%",
-                        height: "32%",
+                        height: "auto",
                         cursor: "pointer",
                         margin: "10px",
                       }}
