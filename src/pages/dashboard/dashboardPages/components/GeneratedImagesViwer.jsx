@@ -1,4 +1,8 @@
 import ReactCompareImage from "react-compare-image";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
+import viewIcon from "../../../../assets/view.png";
+import downloadIcon from "../../../../assets/down.png";
 
 const GeneratedImagesViwer = (props) => {
   return (
@@ -6,8 +10,8 @@ const GeneratedImagesViwer = (props) => {
       <div className="DesignGridLayout">
         {Object.values(props.generatedImages).map((e, key) => {
           return [
-            <div className="grid_item1">
-              <ReactCompareImage
+            <div className="grid_item1" key={"desingn_generated_" + key}>
+              {/* <ReactCompareImage
                 key={"desingn_generated_"}
                 leftImageCss={{
                   borderTopLeftRadius: "10px",
@@ -21,7 +25,42 @@ const GeneratedImagesViwer = (props) => {
                 }}
                 leftImage={props.file}
                 rightImage={e}
-              />
+              /> */}
+              <div class="container">
+                <img src={e} alt="Avatar" class="image" />
+                <div class="overlay">
+                  <div className="floating-buttons">
+                    <PhotoProvider>
+                      <PhotoView src={e}>
+                        <img
+                          style={{
+                            width: "20%",
+                            height: "32%",
+                            margin: "10px",
+                            cursor: "pointer",
+                          }}
+                          src={viewIcon}
+                          alt=""
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
+                    <img
+                      style={{
+                        width: "20%",
+                        height: "32%",
+                        cursor: "pointer",
+                        margin: "10px",
+                      }}
+                      src={downloadIcon}
+                      alt=""
+                      onClick={() => {
+                        // alert();
+                        window.location.href = e;
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>,
           ];
         })}

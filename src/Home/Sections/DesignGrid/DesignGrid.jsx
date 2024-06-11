@@ -131,7 +131,7 @@ const DesignGrid = (props) => {
           Case Study <span>Design</span> Styles
         </h2>
 
-        {Object.values(authData).length > 0 && designImages ? (
+        {Object.values(authData).length > 0 && designImages.length > 0 ? (
           <div className="DesignGridLayout">
             {Object.values(designImages).map((img, key) => {
               return Object.values(img.generated_image_url).map((gen, key) => {

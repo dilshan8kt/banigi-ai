@@ -10,6 +10,8 @@ import t1 from "../../../assets/t1.png";
 import t2 from "../../../assets/t2.png";
 import t3 from "../../../assets/t3.png";
 import t4 from "../../../assets/t4.png";
+import viewIcon from "../../../assets/view.png";
+import downloadIcon from "../../../assets/down.png";
 
 import TryDesignForm from "../../../Components/TryDesignForm";
 import InteriorDesignForm from "../../../Components/InteriorDesignForm";
@@ -17,6 +19,8 @@ import ExteriorDesignForm from "../../../Components/ExteriorDesignForm";
 import LandscapeDesignForm from "../../../Components/LandscapeDesignForm";
 import CustomDesignForm from "../../../Components/CustomDesignForm";
 import { useEffect } from "react";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const TryBanigiAi = (props) => {
   const [activeTab, setActiveTab] = useState(0);
@@ -246,21 +250,56 @@ const TryBanigiAi = (props) => {
                 <div className="swiper-div">
                   {Object.values(generatedImages).map((e, key) => {
                     return [
-                      <ReactCompareImage
-                        key={"design_" + key}
-                        leftImageCss={{
-                          borderTopLeftRadius: "10px",
-                          borderBottomLeftRadius: "10px",
-                          borderTopRightRadius: "10px",
-                          borderBottomRightRadius: "10px",
-                        }}
-                        rightImageCss={{
-                          borderTopRightRadius: "10px",
-                          borderBottomRightRadius: "10px",
-                        }}
-                        leftImage={selectedImage}
-                        rightImage={e}
-                      />,
+                      <div className="swiper-div">
+                        <div class="container">
+                          <img src={e} alt="Avatar" class="image" />
+                          <div class="overlay">
+                            <div className="floating-buttons">
+                              <PhotoProvider>
+                                <PhotoView src={e}>
+                                  <img
+                                    style={{
+                                      width: "12%",
+                                      margin: "10px",
+                                      cursor: "pointer",
+                                    }}
+                                    src={viewIcon}
+                                    alt=""
+                                  />
+                                </PhotoView>
+                              </PhotoProvider>
+                              <img
+                                style={{
+                                  width: "12%",
+                                  cursor: "pointer",
+                                  margin: "10px",
+                                }}
+                                src={downloadIcon}
+                                alt=""
+                                onClick={() => {
+                                  // alert();
+                                  window.location.href = e;
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>,
+                      // <ReactCompareImage
+                      //   key={"design_" + key}
+                      //   leftImageCss={{
+                      //     borderTopLeftRadius: "10px",
+                      //     borderBottomLeftRadius: "10px",
+                      //     borderTopRightRadius: "10px",
+                      //     borderBottomRightRadius: "10px",
+                      //   }}
+                      //   rightImageCss={{
+                      //     borderTopRightRadius: "10px",
+                      //     borderBottomRightRadius: "10px",
+                      //   }}
+                      //   leftImage={selectedImage}
+                      //   rightImage={e}
+                      // />,
                       <br />,
                     ];
                   })}
