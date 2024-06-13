@@ -1,12 +1,19 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import dashboardLogo from "../../assets/logo.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 
 const Dashboard = () => {
   const [showLogout, setShowLogout] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("uid")) {
+      navigate("/");
+    }
+    console.log("kkk");
+  }, []);
 
   const openLogout = () => {
     setShowLogout(!showLogout);
