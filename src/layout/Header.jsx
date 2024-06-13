@@ -148,7 +148,10 @@ const Header = (props) => {
                 manageLoader={props.manageLoader}
               />
             )}
-            <button className="getStarted_btn" onClick={logout}>
+            <button
+              className="getStarted_btn"
+              onClick={() => navigate("/dashboard/interiorDesign")}
+            >
               Get Started
             </button>
             {showSignupModal && (
@@ -222,7 +225,10 @@ const Header = (props) => {
                 manageLoader={props.manageLoader}
               />
             )}
-            <button className="getStarted_btn" onClick={openSignupModal}>
+            <button
+              className="getStarted_btn"
+              onClick={() => navigate("/dashboard/interiorDesign")}
+            >
               Get Started
             </button>
             {showSignupModal && (
