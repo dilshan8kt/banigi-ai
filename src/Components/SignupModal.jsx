@@ -12,6 +12,7 @@ import eyeOpen from "../assets/eyeOpen.png";
 import eyeClose from "../assets/eyeClose.png";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { errorMsg } from "../common/alert";
+import { createUserSign } from "../apis/usersApis";
 
 const SignupModal = ({ closeModal, openLoginModal, manageLoader }) => {
   const navigate = useNavigate();
@@ -50,10 +51,14 @@ const SignupModal = ({ closeModal, openLoginModal, manageLoader }) => {
     if (password == Confirmpassword) {
       const auth = getAuth();
       createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        .then(async (userCredential) => {
           const user = userCredential.user;
-          closeModal();
-          manageLoader(false);
+          let userData = await createUserSign(user.uid, email, "");
+          if (userData) {
+            closeModal();
+            navigate("/dashboard/interiorDesign");
+            manageLoader(false);
+          }
         })
         .catch((error) => {
           const errorCode = error.code;

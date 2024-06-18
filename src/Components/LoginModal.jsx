@@ -22,6 +22,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { errorMsg } from "../common/alert";
+import { createUserSign } from "../apis/usersApis";
 
 const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
   const [email, setEmail] = useState("");
@@ -44,9 +45,15 @@ const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
     const auth = getAuth();
     const provider = new FacebookAuthProvider();
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (result) => {
         // The signed-in user info.
         const user = result.user;
+        console.log(user);
+        let userData = await createUserSign(
+          user.uid,
+          user.providerData[0].email,
+          ""
+        );
         closeModal();
         navigate("/dashboard/interiorDesign");
       })
@@ -57,9 +64,10 @@ const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (result) => {
         // The signed-in user info.
         const user = result.user;
+        let userData = await createUserSign(user.uid, user.email, "");
         closeModal();
         navigate("/dashboard/interiorDesign");
       })
@@ -70,9 +78,10 @@ const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
     const auth = getAuth();
     const provider = new OAuthProvider();
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (result) => {
         // The signed-in user info.
         const user = result.user;
+        let userData = await createUserSign(user.uid, user.email, "");
         closeModal();
         navigate("/dashboard/interiorDesign");
       })
@@ -100,7 +109,7 @@ const LoginModal = ({ closeModal, openSignupModal, manageLoader }) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
-        errorMsg("Invalid Login credentials")
+        errorMsg("Invalid Login credentials");
         manageLoader(false);
       });
   };

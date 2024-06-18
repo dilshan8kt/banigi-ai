@@ -70,6 +70,25 @@ export const saveGeneratedImage = (
     });
 };
 
+export const createUserSign = (uid, email, userName) => {
+  return axios
+    .post(
+      `${base_url}/auth/signup`,
+      {
+        uid: uid,
+        email: email,
+        userName: userName,
+      },
+      { headers }
+    )
+    .then((response) => response.data)
+    .catch((error) => {
+      // props.manageLoader(false);
+      // errorMsg("Duplicate entry");
+      console.log(error);
+    });
+};
+
 export const getMainImage = (props, uid) => {
   return axios
     .get(`${base_url}/api/images/uploaded/${uid}`, { headers })
